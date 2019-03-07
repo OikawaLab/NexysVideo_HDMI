@@ -1,8 +1,8 @@
---Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+--Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
---Tool Version: Vivado v.2016.4 (win64) Build 1733598 Wed Dec 14 22:35:39 MST 2016
---Date        : Fri Mar 31 10:20:24 2017
---Host        : WK115 running 64-bit major release  (build 9200)
+--Tool Version: Vivado v.2017.4 (win64) Build 2086221 Fri Dec 15 20:55:39 MST 2017
+--Date        : Thu Mar  7 20:15:45 2019
+--Host        : Parasha running 64-bit Service Pack 1  (build 7601)
 --Command     : generate_target hdmi_wrapper.bd
 --Design      : hdmi_wrapper
 --Purpose     : IP block netlist
@@ -13,6 +13,8 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity hdmi_wrapper is
   port (
+    DDC_scl_io : inout STD_LOGIC;
+    DDC_sda_io : inout STD_LOGIC;
     DDR3_addr : out STD_LOGIC_VECTOR ( 14 downto 0 );
     DDR3_ba : out STD_LOGIC_VECTOR ( 2 downto 0 );
     DDR3_cas_n : out STD_LOGIC;
@@ -35,8 +37,6 @@ entity hdmi_wrapper is
     TMDS_OUT_clk_p : out STD_LOGIC;
     TMDS_OUT_data_n : out STD_LOGIC_VECTOR ( 2 downto 0 );
     TMDS_OUT_data_p : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    ddc_scl_io : inout STD_LOGIC;
-    ddc_sda_io : inout STD_LOGIC;
     hdmi_hpd : out STD_LOGIC_VECTOR ( 0 to 0 );
     hdmi_rx_txen : out STD_LOGIC_VECTOR ( 0 to 0 );
     reset : in STD_LOGIC;
@@ -93,35 +93,35 @@ architecture STRUCTURE of hdmi_wrapper is
     IO : inout STD_LOGIC
   );
   end component IOBUF;
-  signal ddc_scl_i : STD_LOGIC;
-  signal ddc_scl_o : STD_LOGIC;
-  signal ddc_scl_t : STD_LOGIC;
-  signal ddc_sda_i : STD_LOGIC;
-  signal ddc_sda_o : STD_LOGIC;
-  signal ddc_sda_t : STD_LOGIC;
+  signal DDC_scl_i : STD_LOGIC;
+  signal DDC_scl_o : STD_LOGIC;
+  signal DDC_scl_t : STD_LOGIC;
+  signal DDC_sda_i : STD_LOGIC;
+  signal DDC_sda_o : STD_LOGIC;
+  signal DDC_sda_t : STD_LOGIC;
 begin
-ddc_scl_iobuf: component IOBUF
+DDC_scl_iobuf: component IOBUF
      port map (
-      I => ddc_scl_o,
-      IO => ddc_scl_io,
-      O => ddc_scl_i,
-      T => ddc_scl_t
+      I => DDC_scl_o,
+      IO => DDC_scl_io,
+      O => DDC_scl_i,
+      T => DDC_scl_t
     );
-ddc_sda_iobuf: component IOBUF
+DDC_sda_iobuf: component IOBUF
      port map (
-      I => ddc_sda_o,
-      IO => ddc_sda_io,
-      O => ddc_sda_i,
-      T => ddc_sda_t
+      I => DDC_sda_o,
+      IO => DDC_sda_io,
+      O => DDC_sda_i,
+      T => DDC_sda_t
     );
 hdmi_i: component hdmi
      port map (
-      DDC_scl_i => ddc_scl_i,
-      DDC_scl_o => ddc_scl_o,
-      DDC_scl_t => ddc_scl_t,
-      DDC_sda_i => ddc_sda_i,
-      DDC_sda_o => ddc_sda_o,
-      DDC_sda_t => ddc_sda_t,
+      DDC_scl_i => DDC_scl_i,
+      DDC_scl_o => DDC_scl_o,
+      DDC_scl_t => DDC_scl_t,
+      DDC_sda_i => DDC_sda_i,
+      DDC_sda_o => DDC_sda_o,
+      DDC_sda_t => DDC_sda_t,
       DDR3_addr(14 downto 0) => DDR3_addr(14 downto 0),
       DDR3_ba(2 downto 0) => DDR3_ba(2 downto 0),
       DDR3_cas_n => DDR3_cas_n,

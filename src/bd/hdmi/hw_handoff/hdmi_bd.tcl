@@ -20,7 +20,7 @@ set script_folder [_tcl::get_script_folder]
 ################################################################
 # Check if script is running in correct Vivado version.
 ################################################################
-set scripts_vivado_version 2016.4
+set scripts_vivado_version 2017.4
 set current_vivado_version [version -short]
 
 if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
@@ -49,6 +49,7 @@ if { $list_projs eq "" } {
 
 
 # CHANGE DESIGN NAME HERE
+variable design_name
 set design_name hdmi
 
 # This script was generated for a remote BD. To create a non-remote design,
@@ -88,7 +89,7 @@ if { $run_remote_bd_flow == 1 } {
   }
 
   # Check if design exists on disk within project
-  set list_existing_designs [get_files */${design_name}.bd]
+  set list_existing_designs [get_files -quiet */${design_name}.bd]
   if { $list_existing_designs ne "" } {
      catch {common::send_msg_id "BD_TCL-112" "ERROR" "The design <$design_name> already exists in this project at location:
     $list_existing_designs"}
@@ -121,6 +122,7 @@ current_bd_design $design_name
 
 proc write_mig_file_hdmi_mig_7series_0_0 { str_mig_prj_filepath } {
 
+   file mkdir [ file dirname "$str_mig_prj_filepath" ]
    set mig_prj_file [open $str_mig_prj_filepath  w+]
 
    puts $mig_prj_file {<?xml version='1.0' encoding='UTF-8'?>}
@@ -277,7 +279,7 @@ proc create_hier_cell_microblaze_0_local_memory { parentCell nameHier } {
   variable script_folder
 
   if { $parentCell eq "" || $nameHier eq "" } {
-     catch {common::send_msg_id "BD_TCL-102" "ERROR" create_hier_cell_microblaze_0_local_memory() - Empty argument(s)!"}
+     catch {common::send_msg_id "BD_TCL-102" "ERROR" "create_hier_cell_microblaze_0_local_memory() - Empty argument(s)!"}
      return
   }
 
@@ -316,7 +318,7 @@ proc create_hier_cell_microblaze_0_local_memory { parentCell nameHier } {
   # Create instance: dlmb_bram_if_cntlr, and set properties
   set dlmb_bram_if_cntlr [ create_bd_cell -type ip -vlnv xilinx.com:ip:lmb_bram_if_cntlr:4.0 dlmb_bram_if_cntlr ]
   set_property -dict [ list \
-CONFIG.C_ECC {0} \
+   CONFIG.C_ECC {0} \
  ] $dlmb_bram_if_cntlr
 
   # Create instance: dlmb_v10, and set properties
@@ -325,17 +327,23 @@ CONFIG.C_ECC {0} \
   # Create instance: ilmb_bram_if_cntlr, and set properties
   set ilmb_bram_if_cntlr [ create_bd_cell -type ip -vlnv xilinx.com:ip:lmb_bram_if_cntlr:4.0 ilmb_bram_if_cntlr ]
   set_property -dict [ list \
-CONFIG.C_ECC {0} \
+   CONFIG.C_ECC {0} \
  ] $ilmb_bram_if_cntlr
 
   # Create instance: ilmb_v10, and set properties
   set ilmb_v10 [ create_bd_cell -type ip -vlnv xilinx.com:ip:lmb_v10:3.0 ilmb_v10 ]
 
   # Create instance: lmb_bram, and set properties
-  set lmb_bram [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.3 lmb_bram ]
+  set lmb_bram [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.4 lmb_bram ]
   set_property -dict [ list \
-CONFIG.Memory_Type {True_Dual_Port_RAM} \
-CONFIG.use_bram_block {BRAM_Controller} \
+   CONFIG.EN_SAFETY_CKT {false} \
+   CONFIG.Enable_B {Use_ENB_Pin} \
+   CONFIG.Memory_Type {True_Dual_Port_RAM} \
+   CONFIG.Port_B_Clock {100} \
+   CONFIG.Port_B_Enable_Rate {100} \
+   CONFIG.Port_B_Write_Rate {50} \
+   CONFIG.Use_RSTB_Pin {true} \
+   CONFIG.use_bram_block {BRAM_Controller} \
  ] $lmb_bram
 
   # Create interface connections
@@ -360,6 +368,7 @@ CONFIG.use_bram_block {BRAM_Controller} \
 proc create_root_design { parentCell } {
 
   variable script_folder
+  variable design_name
 
   if { $parentCell eq "" } {
      set parentCell [get_bd_cells /]
@@ -398,49 +407,57 @@ proc create_root_design { parentCell } {
   set hdmi_rx_txen [ create_bd_port -dir O -from 0 -to 0 hdmi_rx_txen ]
   set reset [ create_bd_port -dir I -type rst reset ]
   set_property -dict [ list \
-CONFIG.POLARITY {ACTIVE_LOW} \
+   CONFIG.POLARITY {ACTIVE_LOW} \
  ] $reset
   set sys_clk_i [ create_bd_port -dir I -type clk sys_clk_i ]
   set_property -dict [ list \
-CONFIG.CLK_DOMAIN {/clk_wiz_0_clk_out1} \
-CONFIG.FREQ_HZ {200000000} \
-CONFIG.PHASE {0.0} \
+   CONFIG.CLK_DOMAIN {/clk_wiz_0_clk_out1} \
+   CONFIG.FREQ_HZ {200000000} \
+   CONFIG.PHASE {0.0} \
  ] $sys_clk_i
 
   # Create instance: axi_dynclk_0, and set properties
   set axi_dynclk_0 [ create_bd_cell -type ip -vlnv digilentinc.com:ip:axi_dynclk:1.0 axi_dynclk_0 ]
   set_property -dict [ list \
-CONFIG.ADD_BUFMR {true} \
+   CONFIG.ADD_BUFMR {true} \
  ] $axi_dynclk_0
+
+  set_property -dict [ list \
+   CONFIG.SUPPORTS_NARROW_BURST {0} \
+   CONFIG.NUM_READ_OUTSTANDING {1} \
+   CONFIG.NUM_WRITE_OUTSTANDING {1} \
+   CONFIG.MAX_BURST_LENGTH {1} \
+ ] [get_bd_intf_pins /axi_dynclk_0/s00_axi]
 
   # Create instance: axi_gpio_video, and set properties
   set axi_gpio_video [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_video ]
   set_property -dict [ list \
-CONFIG.C_ALL_INPUTS_2 {1} \
-CONFIG.C_ALL_OUTPUTS {1} \
-CONFIG.C_GPIO2_WIDTH {1} \
-CONFIG.C_GPIO_WIDTH {1} \
-CONFIG.C_INTERRUPT_PRESENT {1} \
-CONFIG.C_IS_DUAL {1} \
-CONFIG.GPIO_BOARD_INTERFACE {Custom} \
-CONFIG.USE_BOARD_FLOW {true} \
+   CONFIG.C_ALL_INPUTS_2 {1} \
+   CONFIG.C_ALL_OUTPUTS {1} \
+   CONFIG.C_GPIO2_WIDTH {1} \
+   CONFIG.C_GPIO_WIDTH {1} \
+   CONFIG.C_INTERRUPT_PRESENT {1} \
+   CONFIG.C_IS_DUAL {1} \
+   CONFIG.GPIO_BOARD_INTERFACE {Custom} \
+   CONFIG.USE_BOARD_FLOW {true} \
  ] $axi_gpio_video
 
   # Create instance: axi_mem_intercon, and set properties
   set axi_mem_intercon [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_mem_intercon ]
   set_property -dict [ list \
-CONFIG.M00_HAS_DATA_FIFO {0} \
-CONFIG.M00_HAS_REGSLICE {4} \
-CONFIG.NUM_MI {1} \
-CONFIG.NUM_SI {4} \
-CONFIG.S00_HAS_DATA_FIFO {0} \
-CONFIG.S00_HAS_REGSLICE {4} \
-CONFIG.S01_HAS_DATA_FIFO {0} \
-CONFIG.S01_HAS_REGSLICE {4} \
-CONFIG.S02_HAS_DATA_FIFO {0} \
-CONFIG.S02_HAS_REGSLICE {4} \
-CONFIG.S03_HAS_DATA_FIFO {0} \
-CONFIG.S03_HAS_REGSLICE {4} \
+   CONFIG.M00_HAS_DATA_FIFO {0} \
+   CONFIG.M00_HAS_REGSLICE {4} \
+   CONFIG.NUM_MI {1} \
+   CONFIG.NUM_SI {4} \
+   CONFIG.S00_HAS_DATA_FIFO {0} \
+   CONFIG.S00_HAS_REGSLICE {4} \
+   CONFIG.S01_HAS_DATA_FIFO {0} \
+   CONFIG.S01_HAS_REGSLICE {4} \
+   CONFIG.S02_HAS_DATA_FIFO {0} \
+   CONFIG.S02_HAS_REGSLICE {4} \
+   CONFIG.S03_HAS_DATA_FIFO {0} \
+   CONFIG.S03_HAS_REGSLICE {4} \
+   CONFIG.SYNCHRONIZATION_STAGES {2} \
  ] $axi_mem_intercon
 
   # Create instance: axi_timer_0, and set properties
@@ -449,34 +466,34 @@ CONFIG.S03_HAS_REGSLICE {4} \
   # Create instance: axi_uartlite_0, and set properties
   set axi_uartlite_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_uartlite:2.0 axi_uartlite_0 ]
   set_property -dict [ list \
-CONFIG.C_BAUDRATE {115200} \
-CONFIG.UARTLITE_BOARD_INTERFACE {usb_uart} \
-CONFIG.USE_BOARD_FLOW {true} \
+   CONFIG.C_BAUDRATE {115200} \
+   CONFIG.UARTLITE_BOARD_INTERFACE {usb_uart} \
+   CONFIG.USE_BOARD_FLOW {true} \
  ] $axi_uartlite_0
 
   # Create instance: axi_vdma_0, and set properties
-  set axi_vdma_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_vdma:6.2 axi_vdma_0 ]
+  set axi_vdma_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_vdma:6.3 axi_vdma_0 ]
   set_property -dict [ list \
-CONFIG.c_addr_width {32} \
-CONFIG.c_include_s2mm {1} \
-CONFIG.c_include_s2mm_dre {0} \
-CONFIG.c_m_axi_mm2s_data_width {128} \
-CONFIG.c_m_axi_s2mm_data_width {128} \
-CONFIG.c_m_axis_mm2s_tdata_width {24} \
-CONFIG.c_mm2s_genlock_mode {0} \
-CONFIG.c_mm2s_linebuffer_depth {4096} \
-CONFIG.c_mm2s_max_burst_length {32} \
-CONFIG.c_s2mm_genlock_mode {0} \
-CONFIG.c_s2mm_linebuffer_depth {4096} \
-CONFIG.c_s2mm_max_burst_length {32} \
+   CONFIG.c_addr_width {32} \
+   CONFIG.c_include_s2mm {1} \
+   CONFIG.c_include_s2mm_dre {0} \
+   CONFIG.c_m_axi_mm2s_data_width {128} \
+   CONFIG.c_m_axi_s2mm_data_width {128} \
+   CONFIG.c_m_axis_mm2s_tdata_width {24} \
+   CONFIG.c_mm2s_genlock_mode {0} \
+   CONFIG.c_mm2s_linebuffer_depth {4096} \
+   CONFIG.c_mm2s_max_burst_length {32} \
+   CONFIG.c_s2mm_genlock_mode {0} \
+   CONFIG.c_s2mm_linebuffer_depth {4096} \
+   CONFIG.c_s2mm_max_burst_length {32} \
  ] $axi_vdma_0
 
   # Create instance: dvi2rgb_0, and set properties
   set dvi2rgb_0 [ create_bd_cell -type ip -vlnv digilentinc.com:ip:dvi2rgb:1.7 dvi2rgb_0 ]
   set_property -dict [ list \
-CONFIG.kAddBUFG {false} \
-CONFIG.kClkRange {2} \
-CONFIG.kRstActiveHigh {false} \
+   CONFIG.kAddBUFG {false} \
+   CONFIG.kClkRange {2} \
+   CONFIG.kRstActiveHigh {false} \
  ] $dvi2rgb_0
 
   # Create instance: mdm_1, and set properties
@@ -485,47 +502,48 @@ CONFIG.kRstActiveHigh {false} \
   # Create instance: microblaze_0, and set properties
   set microblaze_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:microblaze:10.0 microblaze_0 ]
   set_property -dict [ list \
-CONFIG.C_CACHE_BYTE_SIZE {32768} \
-CONFIG.C_DCACHE_BYTE_SIZE {32768} \
-CONFIG.C_DCACHE_DATA_WIDTH {1} \
-CONFIG.C_DCACHE_LINE_LEN {8} \
-CONFIG.C_DCACHE_USE_WRITEBACK {1} \
-CONFIG.C_DCACHE_VICTIMS {8} \
-CONFIG.C_DEBUG_COUNTER_WIDTH {32} \
-CONFIG.C_DEBUG_ENABLED {2} \
-CONFIG.C_D_AXI {1} \
-CONFIG.C_D_LMB {1} \
-CONFIG.C_ENABLE_DISCRETE_PORTS {0} \
-CONFIG.C_ICACHE_DATA_WIDTH {1} \
-CONFIG.C_ICACHE_LINE_LEN {8} \
-CONFIG.C_ICACHE_STREAMS {1} \
-CONFIG.C_ICACHE_VICTIMS {8} \
-CONFIG.C_I_LMB {1} \
-CONFIG.C_MMU_ZONES {2} \
-CONFIG.C_USE_BARREL {1} \
-CONFIG.C_USE_BRANCH_TARGET_CACHE {0} \
-CONFIG.C_USE_DCACHE {1} \
-CONFIG.C_USE_DIV {1} \
-CONFIG.C_USE_FPU {2} \
-CONFIG.C_USE_HW_MUL {2} \
-CONFIG.C_USE_ICACHE {1} \
-CONFIG.C_USE_MSR_INSTR {1} \
-CONFIG.C_USE_PCMP_INSTR {1} \
-CONFIG.C_USE_REORDER_INSTR {1} \
-CONFIG.G_TEMPLATE_LIST {2} \
-CONFIG.G_USE_EXCEPTIONS {1} \
+   CONFIG.C_CACHE_BYTE_SIZE {32768} \
+   CONFIG.C_DCACHE_BYTE_SIZE {32768} \
+   CONFIG.C_DCACHE_DATA_WIDTH {1} \
+   CONFIG.C_DCACHE_LINE_LEN {8} \
+   CONFIG.C_DCACHE_USE_WRITEBACK {1} \
+   CONFIG.C_DCACHE_VICTIMS {8} \
+   CONFIG.C_DEBUG_COUNTER_WIDTH {32} \
+   CONFIG.C_DEBUG_ENABLED {2} \
+   CONFIG.C_D_AXI {1} \
+   CONFIG.C_D_LMB {1} \
+   CONFIG.C_ENABLE_DISCRETE_PORTS {0} \
+   CONFIG.C_ICACHE_DATA_WIDTH {1} \
+   CONFIG.C_ICACHE_LINE_LEN {8} \
+   CONFIG.C_ICACHE_STREAMS {1} \
+   CONFIG.C_ICACHE_VICTIMS {8} \
+   CONFIG.C_I_LMB {1} \
+   CONFIG.C_MMU_ZONES {2} \
+   CONFIG.C_USE_BARREL {1} \
+   CONFIG.C_USE_BRANCH_TARGET_CACHE {0} \
+   CONFIG.C_USE_DCACHE {1} \
+   CONFIG.C_USE_DIV {1} \
+   CONFIG.C_USE_FPU {2} \
+   CONFIG.C_USE_HW_MUL {2} \
+   CONFIG.C_USE_ICACHE {1} \
+   CONFIG.C_USE_MSR_INSTR {1} \
+   CONFIG.C_USE_PCMP_INSTR {1} \
+   CONFIG.C_USE_REORDER_INSTR {1} \
+   CONFIG.G_TEMPLATE_LIST {2} \
+   CONFIG.G_USE_EXCEPTIONS {1} \
  ] $microblaze_0
 
   # Create instance: microblaze_0_axi_intc, and set properties
   set microblaze_0_axi_intc [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_intc:4.1 microblaze_0_axi_intc ]
   set_property -dict [ list \
-CONFIG.C_HAS_FAST {1} \
+   CONFIG.C_HAS_FAST {1} \
  ] $microblaze_0_axi_intc
 
   # Create instance: microblaze_0_axi_periph, and set properties
   set microblaze_0_axi_periph [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 microblaze_0_axi_periph ]
   set_property -dict [ list \
-CONFIG.NUM_MI {8} \
+   CONFIG.NUM_MI {8} \
+   CONFIG.SYNCHRONIZATION_STAGES {2} \
  ] $microblaze_0_axi_periph
 
   # Create instance: microblaze_0_local_memory
@@ -534,7 +552,7 @@ CONFIG.NUM_MI {8} \
   # Create instance: microblaze_0_xlconcat, and set properties
   set microblaze_0_xlconcat [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 microblaze_0_xlconcat ]
   set_property -dict [ list \
-CONFIG.NUM_PORTS {6} \
+   CONFIG.NUM_PORTS {6} \
  ] $microblaze_0_xlconcat
 
   # Create instance: mig_7series_0, and set properties
@@ -548,18 +566,18 @@ CONFIG.NUM_PORTS {6} \
   write_mig_file_hdmi_mig_7series_0_0 $str_mig_file_path
 
   set_property -dict [ list \
-CONFIG.BOARD_MIG_PARAM {Custom} \
-CONFIG.MIG_DONT_TOUCH_PARAM {Custom} \
-CONFIG.RESET_BOARD_INTERFACE {reset} \
-CONFIG.XML_INPUT_FILE {mig_b.prj} \
+   CONFIG.BOARD_MIG_PARAM {Custom} \
+   CONFIG.MIG_DONT_TOUCH_PARAM {Custom} \
+   CONFIG.RESET_BOARD_INTERFACE {reset} \
+   CONFIG.XML_INPUT_FILE {mig_b.prj} \
  ] $mig_7series_0
 
   # Create instance: rgb2dvi_0, and set properties
   set rgb2dvi_0 [ create_bd_cell -type ip -vlnv digilentinc.com:ip:rgb2dvi:1.3 rgb2dvi_0 ]
   set_property -dict [ list \
-CONFIG.kClkRange {2} \
-CONFIG.kGenerateSerialClk {false} \
-CONFIG.kRstActiveHigh {false} \
+   CONFIG.kClkRange {2} \
+   CONFIG.kGenerateSerialClk {false} \
+   CONFIG.kRstActiveHigh {false} \
  ] $rgb2dvi_0
 
   # Create instance: rst_mig_7series_0_100M, and set properties
@@ -568,40 +586,40 @@ CONFIG.kRstActiveHigh {false} \
   # Create instance: rst_mig_7series_0_pxl, and set properties
   set rst_mig_7series_0_pxl [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 rst_mig_7series_0_pxl ]
   set_property -dict [ list \
-CONFIG.RESET_BOARD_INTERFACE {Custom} \
-CONFIG.USE_BOARD_FLOW {true} \
+   CONFIG.RESET_BOARD_INTERFACE {Custom} \
+   CONFIG.USE_BOARD_FLOW {true} \
  ] $rst_mig_7series_0_pxl
 
   # Create instance: v_axi4s_vid_out_0, and set properties
   set v_axi4s_vid_out_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_axi4s_vid_out:4.0 v_axi4s_vid_out_0 ]
   set_property -dict [ list \
-CONFIG.C_ADDR_WIDTH {5} \
-CONFIG.C_S_AXIS_VIDEO_DATA_WIDTH {8} \
-CONFIG.C_S_AXIS_VIDEO_FORMAT {2} \
-CONFIG.C_VTG_MASTER_SLAVE {1} \
+   CONFIG.C_ADDR_WIDTH {5} \
+   CONFIG.C_S_AXIS_VIDEO_DATA_WIDTH {8} \
+   CONFIG.C_S_AXIS_VIDEO_FORMAT {2} \
+   CONFIG.C_VTG_MASTER_SLAVE {1} \
  ] $v_axi4s_vid_out_0
 
   # Create instance: v_tc_0, and set properties
   set v_tc_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_tc:6.1 v_tc_0 ]
   set_property -dict [ list \
-CONFIG.enable_detection {false} \
+   CONFIG.enable_detection {false} \
  ] $v_tc_0
 
   # Create instance: v_tc_1, and set properties
   set v_tc_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_tc:6.1 v_tc_1 ]
   set_property -dict [ list \
-CONFIG.HAS_INTC_IF {true} \
-CONFIG.enable_generation {false} \
-CONFIG.horizontal_blank_detection {false} \
-CONFIG.max_lines_per_frame {2048} \
-CONFIG.vertical_blank_detection {false} \
+   CONFIG.HAS_INTC_IF {true} \
+   CONFIG.enable_generation {false} \
+   CONFIG.horizontal_blank_detection {false} \
+   CONFIG.max_lines_per_frame {2048} \
+   CONFIG.vertical_blank_detection {false} \
  ] $v_tc_1
 
   # Create instance: v_vid_in_axi4s_0, and set properties
   set v_vid_in_axi4s_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_vid_in_axi4s:4.0 v_vid_in_axi4s_0 ]
   set_property -dict [ list \
-CONFIG.C_ADDR_WIDTH {5} \
-CONFIG.C_HAS_ASYNC_CLK {1} \
+   CONFIG.C_ADDR_WIDTH {5} \
+   CONFIG.C_HAS_ASYNC_CLK {1} \
  ] $v_vid_in_axi4s_0
 
   # Create instance: xlconstant_0, and set properties
@@ -682,100 +700,6 @@ CONFIG.C_HAS_ASYNC_CLK {1} \
   create_bd_addr_seg -range 0x00010000 -offset 0x44A10000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs v_tc_0/ctrl/Reg] SEG_v_tc_0_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x44A30000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs v_tc_1/ctrl/Reg] SEG_v_tc_1_Reg
 
-  # Perform GUI Layout
-  regenerate_bd_layout -layout_string {
-   DisplayTieOff: "1",
-   guistr: "# # String gsaved with Nlview 6.6.5b  2016-09-06 bk=1.3687 VDI=39 GEI=35 GUI=JA:1.6
-#  -string -flagsOSRD
-preplace port TMDS_OUT -pg 1 -y 900 -defaultsOSRD
-preplace port usb_uart -pg 1 -y 0 -defaultsOSRD
-preplace port TMDS_IN -pg 1 -y 1510 -defaultsOSRD
-preplace port DDR3 -pg 1 -y 1070 -defaultsOSRD
-preplace port sys_clk_i -pg 1 -y 1150 -defaultsOSRD
-preplace port DDC -pg 1 -y 1510 -defaultsOSRD
-preplace port reset -pg 1 -y 1130 -defaultsOSRD
-preplace portBus hdmi_hpd -pg 1 -y -40 -defaultsOSRD
-preplace portBus hdmi_rx_txen -pg 1 -y -210 -defaultsOSRD
-preplace inst v_axi4s_vid_out_0 -pg 1 -lvl 7 -y 890 -defaultsOSRD
-preplace inst rst_mig_7series_0_pxl -pg 1 -lvl 3 -y 1340 -defaultsOSRD
-preplace inst v_tc_0 -pg 1 -lvl 6 -y 630 -defaultsOSRD
-preplace inst rst_mig_7series_0_100M -pg 1 -lvl 1 -y 650 -defaultsOSRD
-preplace inst axi_vdma_0 -pg 1 -lvl 6 -y 1030 -defaultsOSRD
-preplace inst v_tc_1 -pg 1 -lvl 6 -y 1360 -defaultsOSRD
-preplace inst mig_7series_0 -pg 1 -lvl 8 -y 1130 -defaultsOSRD
-preplace inst xlconstant_0 -pg 1 -lvl 8 -y -210 -defaultsOSRD
-preplace inst microblaze_0_axi_periph -pg 1 -lvl 5 -y 240 -defaultsOSRD
-preplace inst axi_timer_0 -pg 1 -lvl 2 -y 150 -defaultsOSRD
-preplace inst microblaze_0_xlconcat -pg 1 -lvl 1 -y 1300 -defaultsOSRD
-preplace inst rgb2dvi_0 -pg 1 -lvl 8 -y 900 -defaultsOSRD
-preplace inst microblaze_0_axi_intc -pg 1 -lvl 2 -y 360 -defaultsOSRD
-preplace inst mdm_1 -pg 1 -lvl 2 -y 500 -defaultsOSRD
-preplace inst axi_gpio_video -pg 1 -lvl 6 -y 1620 -defaultsOSRD
-preplace inst axi_dynclk_0 -pg 1 -lvl 4 -y 920 -defaultsOSRD
-preplace inst v_vid_in_axi4s_0 -pg 1 -lvl 5 -y 1430 -defaultsOSRD
-preplace inst microblaze_0 -pg 1 -lvl 4 -y 480 -defaultsOSRD
-preplace inst axi_uartlite_0 -pg 1 -lvl 1 -y 10 -defaultsOSRD
-preplace inst dvi2rgb_0 -pg 1 -lvl 4 -y 1630 -defaultsOSRD
-preplace inst axi_mem_intercon -pg 1 -lvl 7 -y 450 -defaultsOSRD
-preplace inst microblaze_0_local_memory -pg 1 -lvl 5 -y 570 -defaultsOSRD
-preplace netloc mig_7series_0_mmcm_locked 1 0 9 10 1200 NJ 1200 N 1200 1070J 1200 NJ 1200 NJ 1200 NJ 1200 2760J 1250 3030
-preplace netloc v_vid_in_axi4s_0_video_out 1 5 1 1950
-preplace netloc microblaze_0_axi_periph_M04_AXI 1 3 3 1090J -50 NJ -50 1900
-preplace netloc sys_clk_i_1 1 0 8 -20J 1180 NJ 1180 NJ 1180 NJ 1180 NJ 1180 NJ 1180 NJ 1180 2760J
-preplace netloc axi_vdma_0_s2mm_introut 1 0 7 30 1160 NJ 1160 NJ 1160 NJ 1160 NJ 1160 NJ 1160 2350
-preplace netloc axi_gpio_video_ip2intc_irpt 1 0 7 20 1710 NJ 1710 NJ 1710 NJ 1710 NJ 1710 NJ 1710 2340
-preplace netloc axi_dynclk_0_PXL_CLK_O 1 4 4 NJ 900 1980 900 2390 1000 2730J
-preplace netloc SYS_Rst_1 1 1 4 NJ 630 NJ 630 NJ 630 1530J
-preplace netloc mig_7series_0_DDR3 1 8 1 NJ
-preplace netloc mig_7series_0_ui_addn_clk_0 1 4 5 1600 1220 1980J 1220 NJ 1220 2740J 1260 3050
-preplace netloc microblaze_0_intr 1 1 1 370
-preplace netloc v_axi4s_vid_out_0_vid_io_out 1 7 1 2760
-preplace netloc axi_vdma_0_M_AXI_MM2S 1 6 1 2350
-preplace netloc rst_mig_7series_0_pxl_peripheral_reset 1 3 2 N 1340 1540
-preplace netloc microblaze_0_interrupt 1 2 2 N 360 1060
-preplace netloc microblaze_0_intc_axi 1 1 5 390J -30 NJ -30 NJ -30 NJ -30 1880
-preplace netloc microblaze_0_axi_periph_M06_AXI 1 5 1 1920
-preplace netloc microblaze_0_axi_periph_M03_AXI 1 5 1 1940
-preplace netloc axi_vdma_0_M_AXIS_MM2S 1 6 1 2340
-preplace netloc v_tc_0_irq 1 0 7 0 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 2340
-preplace netloc rst_mig_7series_0_pxl_peripheral_aresetn 1 3 3 N 1380 1530 1560 1990J
-preplace netloc mig_7series_0_ui_addn_clk_2 1 3 6 1090J 1230 NJ 1230 NJ 1230 NJ 1230 2770 1240 3040
-preplace netloc microblaze_0_ilmb_1 1 4 1 1600
-preplace netloc microblaze_0_M_AXI_DC 1 4 3 1580J 650 1880J 340 NJ
-preplace netloc axi_mem_intercon_M00_AXI 1 7 1 2770
-preplace netloc axi_dynclk_0_PXL_CLK_5X_O 1 4 4 NJ 920 1900J 910 2360J 1010 2740J
-preplace netloc rgb2dvi_0_TMDS 1 8 1 NJ
-preplace netloc microblaze_0_axi_periph_M05_AXI 1 1 5 380J -40 NJ -40 NJ -40 NJ -40 1890
-preplace netloc microblaze_0_axi_dp 1 4 1 1540
-preplace netloc v_tc_1_irq 1 0 7 10 1550 NJ 1550 NJ 1550 NJ 1550 NJ 1550 2000J 1520 2350
-preplace netloc mig_7series_0_ui_clk 1 0 9 -20 1000 380 1000 N 1000 1070 1000 1560 1000 1970 780 2360 770 NJ 770 3030
-preplace netloc TMDS_IN_1 1 0 4 -20J 1600 NJ 1600 N 1600 N
-preplace netloc dvi2rgb_0_DDC 1 4 5 NJ 1600 1890J 1510 NJ 1510 NJ 1510 NJ
-preplace netloc xlconstant_0_dout 1 8 1 NJ
-preplace netloc rst_mig_7series_0_100M_peripheral_aresetn 1 0 8 10 200 360 690 NJ 690 1060 690 1590 690 1940 790 2380 780 2750J
-preplace netloc rst_mig_7series_0_100M_interconnect_aresetn 1 1 6 NJ 670 NJ 670 N 670 1550 670 1910J 400 NJ
-preplace netloc dvi2rgb_0_aPixelClkLckd 1 2 5 740 1720 N 1720 1560 1720 NJ 1720 2350
-preplace netloc microblaze_0_axi_periph_M01_AXI 1 5 1 1950
-preplace netloc microblaze_0_M_AXI_IC 1 4 3 1540J 660 1890J 360 NJ
-preplace netloc axi_vdma_0_mm2s_introut 1 0 7 20 1150 NJ 1150 NJ 1150 NJ 1150 NJ 1150 NJ 1150 2380
-preplace netloc axi_uartlite_0_UART 1 1 8 360J -20 NJ -20 NJ -20 NJ -20 NJ -20 NJ -20 NJ -20 3030J
-preplace netloc rst_mig_7series_0_100M_mb_reset 1 1 3 390 610 NJ 610 1080J
-preplace netloc mig_7series_0_ui_clk_sync_rst 1 0 9 30 760 NJ 760 NJ 760 NJ 760 NJ 760 NJ 760 NJ 760 NJ 760 3050
-preplace netloc microblaze_0_dlmb_1 1 4 1 1570
-preplace netloc microblaze_0_axi_periph_M07_AXI 1 0 6 -20 -70 NJ -70 NJ -70 NJ -70 NJ -70 1910
-preplace netloc microblaze_0_axi_periph_M02_AXI 1 5 1 1930
-preplace netloc v_vid_in_axi4s_0_vtiming_out 1 5 1 1960
-preplace netloc v_tc_0_vtiming_out 1 6 1 2390
-preplace netloc microblaze_0_debug 1 2 2 NJ 490 1060
-preplace netloc axi_vdma_0_M_AXI_S2MM 1 6 1 2370
-preplace netloc reset_1 1 0 8 -10J 1170 NJ 1170 720J 1170 NJ 1170 NJ 1170 NJ 1170 NJ 1170 2740J
-preplace netloc axi_gpio_video_gpio_io_o 1 6 3 N 1600 NJ 1600 3060J
-preplace netloc dvi2rgb_0_RGB 1 4 1 1550
-preplace netloc dvi2rgb_0_PixelClk 1 2 4 730 1430 N 1430 1570 1570 1980J
-preplace netloc axi_timer_0_interrupt 1 0 3 30 1400 NJ 1400 710
-levelinfo -pg 1 -40 200 600 900 1310 1750 2180 2600 2920 3100 -top -250 -bot 1850
-",
-}
 
   # Restore current instance
   current_bd_instance $oldCurInst
