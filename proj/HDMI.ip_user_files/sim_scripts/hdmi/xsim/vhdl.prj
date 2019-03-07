@@ -1,0 +1,42 @@
+vhdl xil_defaultlib  \
+"../../../../../src/bd/hdmi/ipshared/9097/src/axi_dynclk_S00_AXI.vhd" \
+"../../../../../src/bd/hdmi/ipshared/9097/src/axi_dynclk.vhd" \
+"../../../bd/hdmi/ip/hdmi_axi_dynclk_0_0/sim/hdmi_axi_dynclk_0_0.vhd" \
+"../../../bd/hdmi/ip/hdmi_axi_gpio_video_0/sim/hdmi_axi_gpio_video_0.vhd" \
+"../../../bd/hdmi/ip/hdmi_axi_timer_0_0/sim/hdmi_axi_timer_0_0.vhd" \
+"../../../bd/hdmi/ip/hdmi_axi_uartlite_0_0/sim/hdmi_axi_uartlite_0_0.vhd" \
+"../../../bd/hdmi/ip/hdmi_axi_vdma_0_0/sim/hdmi_axi_vdma_0_0.vhd" \
+"../../../../../src/bd/hdmi/ipshared/269e/src/SyncBase.vhd" \
+"../../../../../src/bd/hdmi/ipshared/269e/src/EEPROM_8b.vhd" \
+"../../../../../src/bd/hdmi/ipshared/269e/src/TWI_SlaveCtl.vhd" \
+"../../../../../src/bd/hdmi/ipshared/269e/src/GlitchFilter.vhd" \
+"../../../../../src/bd/hdmi/ipshared/269e/src/SyncAsync.vhd" \
+"../../../../../src/bd/hdmi/ipshared/269e/src/DVI_Constants.vhd" \
+"../../../../../src/bd/hdmi/ipshared/269e/src/SyncAsyncReset.vhd" \
+"../../../../../src/bd/hdmi/ipshared/269e/src/PhaseAlign.vhd" \
+"../../../../../src/bd/hdmi/ipshared/269e/src/InputSERDES.vhd" \
+"../../../../../src/bd/hdmi/ipshared/269e/src/ChannelBond.vhd" \
+"../../../../../src/bd/hdmi/ipshared/269e/src/ResyncToBUFG.vhd" \
+"../../../../../src/bd/hdmi/ipshared/269e/src/TMDS_Decoder.vhd" \
+"../../../../../src/bd/hdmi/ipshared/269e/src/TMDS_Clocking.vhd" \
+"../../../../../src/bd/hdmi/ipshared/269e/src/dvi2rgb.vhd" \
+"../../../bd/hdmi/ip/hdmi_dvi2rgb_0_0/sim/hdmi_dvi2rgb_0_0.vhd" \
+"../../../bd/hdmi/ip/hdmi_mdm_1_0/sim/hdmi_mdm_1_0.vhd" \
+"../../../bd/hdmi/ip/hdmi_microblaze_0_0/sim/hdmi_microblaze_0_0.vhd" \
+"../../../bd/hdmi/ip/hdmi_microblaze_0_axi_intc_0/sim/hdmi_microblaze_0_axi_intc_0.vhd" \
+"../../../bd/hdmi/ip/hdmi_dlmb_bram_if_cntlr_0/sim/hdmi_dlmb_bram_if_cntlr_0.vhd" \
+"../../../bd/hdmi/ip/hdmi_dlmb_v10_0/sim/hdmi_dlmb_v10_0.vhd" \
+"../../../bd/hdmi/ip/hdmi_ilmb_bram_if_cntlr_0/sim/hdmi_ilmb_bram_if_cntlr_0.vhd" \
+"../../../bd/hdmi/ip/hdmi_ilmb_v10_0/sim/hdmi_ilmb_v10_0.vhd" \
+"../../../../../src/bd/hdmi/ipshared/dc1a/src/ClockGen.vhd" \
+"../../../../../src/bd/hdmi/ipshared/dc1a/src/OutputSERDES.vhd" \
+"../../../../../src/bd/hdmi/ipshared/dc1a/src/TMDS_Encoder.vhd" \
+"../../../../../src/bd/hdmi/ipshared/dc1a/src/rgb2dvi.vhd" \
+"../../../bd/hdmi/ip/hdmi_rgb2dvi_0_0/sim/hdmi_rgb2dvi_0_0.vhd" \
+"../../../bd/hdmi/ip/hdmi_rst_mig_7series_0_100M_0/sim/hdmi_rst_mig_7series_0_100M_0.vhd" \
+"../../../bd/hdmi/ip/hdmi_rst_mig_7series_0_pxl_0/sim/hdmi_rst_mig_7series_0_pxl_0.vhd" \
+"../../../bd/hdmi/ip/hdmi_v_tc_0_0/sim/hdmi_v_tc_0_0.vhd" \
+"../../../bd/hdmi/ip/hdmi_v_tc_1_0/sim/hdmi_v_tc_1_0.vhd" \
+"../../../bd/hdmi/sim/hdmi.vhd" \
+
+nosort
