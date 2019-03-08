@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="33">
   <CompositeFile CompositeFileTopName="hdmi" CanBeSetAsTop="true" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1551957397"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1551957397"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1551957397"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1551957397"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1551961462"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1551961462"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1551961462"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1551961462"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\hdmi_axi_dynclk_0_0\hdmi_axi_dynclk_0_0.xci" Type="IP">
         <Instance HierarchyPath="axi_dynclk_0"/>
@@ -24,6 +24,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\hdmi_axi_mem_intercon_0\hdmi_axi_mem_intercon_0.xci" Type="IP">
+        <Instance HierarchyPath="axi_mem_intercon"/>
         <Properties IsEditable="false" IsVisible="false" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -87,6 +88,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\hdmi_microblaze_0_axi_periph_0\hdmi_microblaze_0_axi_periph_0.xci" Type="IP">
+        <Instance HierarchyPath="microblaze_0_axi_periph"/>
         <Properties IsEditable="false" IsVisible="false" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -317,12 +319,13 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="synth\hdmi.vhd" Type="VHDL">
+      <File Name="synth\hdmi.v" Type="Verilog">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
       </File>
-      <File Name="sim\hdmi.vhd" Type="VHDL">
+      <File Name="sim\hdmi.v" Type="Verilog">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
