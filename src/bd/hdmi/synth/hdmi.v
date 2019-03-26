@@ -1,7 +1,7 @@
 //Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2017.4 (win64) Build 2086221 Fri Dec 15 20:55:39 MST 2017
-//Date        : Fri Mar 22 18:41:51 2019
+//Date        : Tue Mar 26 00:12:19 2019
 //Host        : Parasha running 64-bit Service Pack 1  (build 7601)
 //Command     : generate_target hdmi.bd
 //Design      : hdmi
@@ -39,10 +39,14 @@ module hdmi
     TMDS_OUT_clk_p,
     TMDS_OUT_data_n,
     TMDS_OUT_data_p,
+    clksys_i,
+    cpu_resetn_i,
     hdmi_hpd,
     hdmi_rx_txen,
-    reset,
-    sys_clk_i,
+    mb_reset_o,
+    mig_init_calib_complete_o,
+    mig_mmcm_locked_o,
+    mig_ui_clk_sync_rst_o,
     usb_uart_rxd,
     usb_uart_txd);
   (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 DDC SCL_I" *) input DDC_scl_i;
@@ -73,14 +77,17 @@ module hdmi
   (* X_INTERFACE_INFO = "digilentinc.com:interface:tmds:1.0 TMDS_OUT CLK_P" *) output TMDS_OUT_clk_p;
   (* X_INTERFACE_INFO = "digilentinc.com:interface:tmds:1.0 TMDS_OUT DATA_N" *) output [2:0]TMDS_OUT_data_n;
   (* X_INTERFACE_INFO = "digilentinc.com:interface:tmds:1.0 TMDS_OUT DATA_P" *) output [2:0]TMDS_OUT_data_p;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLKSYS_I CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLKSYS_I, CLK_DOMAIN /clk_wiz_0_clk_out1, FREQ_HZ 200000000, PHASE 0.0" *) input clksys_i;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.CPU_RESETN_I RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.CPU_RESETN_I, POLARITY ACTIVE_LOW" *) input cpu_resetn_i;
   output [0:0]hdmi_hpd;
   output [0:0]hdmi_rx_txen;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RESET, POLARITY ACTIVE_LOW" *) input reset;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.SYS_CLK_I CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.SYS_CLK_I, CLK_DOMAIN /clk_wiz_0_clk_out1, FREQ_HZ 200000000, PHASE 0.0" *) input sys_clk_i;
+  output mb_reset_o;
+  output mig_init_calib_complete_o;
+  output mig_mmcm_locked_o;
+  output mig_ui_clk_sync_rst_o;
   (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 usb_uart RxD" *) input usb_uart_rxd;
   (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 usb_uart TxD" *) output usb_uart_txd;
 
-  wire [0:0]SYS_Rst_1;
   wire TMDS_IN_1_CLK_N;
   wire TMDS_IN_1_CLK_P;
   wire [2:0]TMDS_IN_1_DATA_N;
@@ -161,6 +168,7 @@ module hdmi
   wire axi_vdma_0_M_AXI_S2MM_WVALID;
   wire axi_vdma_0_mm2s_introut;
   wire axi_vdma_0_s2mm_introut;
+  wire clksys_i;
   wire dvi2rgb_0_DDC_SCL_I;
   wire dvi2rgb_0_DDC_SCL_O;
   wire dvi2rgb_0_DDC_SCL_T;
@@ -428,7 +436,8 @@ module hdmi
   wire mig_7series_0_ui_addn_clk_2;
   wire mig_7series_0_ui_clk;
   wire mig_7series_0_ui_clk_sync_rst;
-  wire reset_1;
+  wire mig_i0_init_calib_complete;
+  wire [0:0]proc_sys_reset_0_bus_struct_reset;
   wire rgb2dvi_0_TMDS_CLK_N;
   wire rgb2dvi_0_TMDS_CLK_P;
   wire [2:0]rgb2dvi_0_TMDS_DATA_N;
@@ -438,7 +447,7 @@ module hdmi
   wire [0:0]rst_mig_7series_0_100M_peripheral_aresetn;
   wire [0:0]rst_mig_7series_0_pxl_peripheral_aresetn;
   wire [0:0]rst_mig_7series_0_pxl_peripheral_reset;
-  wire sys_clk_i_1;
+  wire rstsys_i;
   wire v_axi4s_vid_out_0_vid_io_out_ACTIVE_VIDEO;
   wire [23:0]v_axi4s_vid_out_0_vid_io_out_DATA;
   wire v_axi4s_vid_out_0_vid_io_out_HSYNC;
@@ -488,8 +497,11 @@ module hdmi
   assign dvi2rgb_0_DDC_SDA_I = DDC_sda_i;
   assign hdmi_hpd[0] = axi_gpio_video_gpio_io_o;
   assign hdmi_rx_txen[0] = xlconstant_0_dout;
-  assign reset_1 = reset;
-  assign sys_clk_i_1 = sys_clk_i;
+  assign mb_reset_o = rst_mig_7series_0_100M_mb_reset;
+  assign mig_init_calib_complete_o = mig_i0_init_calib_complete;
+  assign mig_mmcm_locked_o = mig_7series_0_mmcm_locked;
+  assign mig_ui_clk_sync_rst_o = mig_7series_0_ui_clk_sync_rst;
+  assign rstsys_i = cpu_resetn_i;
   assign usb_uart_txd = axi_uartlite_0_UART_TxD;
   hdmi_axi_dynclk_0_0 axi_dynclk_i0
        (.PXL_CLK_5X_O(axi_dynclk_0_PXL_CLK_5X_O),
@@ -960,7 +972,7 @@ module hdmi
         .ILMB_ue(microblaze_0_ilmb_1_UE),
         .ILMB_wait(microblaze_0_ilmb_1_WAIT),
         .LMB_Clk(mig_7series_0_ui_clk),
-        .SYS_Rst(SYS_Rst_1));
+        .SYS_Rst(proc_sys_reset_0_bus_struct_reset));
   hdmi_mdm_1_0 mdm_1
        (.Dbg_Capture_0(microblaze_0_debug_CAPTURE),
         .Dbg_Clk_0(microblaze_0_debug_CLK),
@@ -1101,6 +1113,7 @@ module hdmi
         .ddr3_ras_n(mig_7series_0_DDR3_RAS_N),
         .ddr3_reset_n(mig_7series_0_DDR3_RESET_N),
         .ddr3_we_n(mig_7series_0_DDR3_WE_N),
+        .init_calib_complete(mig_i0_init_calib_complete),
         .mmcm_locked(mig_7series_0_mmcm_locked),
         .s_axi_araddr(axi_mem_intercon_M00_AXI_ARADDR),
         .s_axi_arburst(axi_mem_intercon_M00_AXI_ARBURST),
@@ -1137,12 +1150,22 @@ module hdmi
         .s_axi_wready(axi_mem_intercon_M00_AXI_WREADY),
         .s_axi_wstrb(axi_mem_intercon_M00_AXI_WSTRB),
         .s_axi_wvalid(axi_mem_intercon_M00_AXI_WVALID),
-        .sys_clk_i(sys_clk_i_1),
-        .sys_rst(reset_1),
+        .sys_clk_i(clksys_i),
+        .sys_rst(rstsys_i),
         .ui_addn_clk_0(mig_7series_0_ui_addn_clk_0),
         .ui_addn_clk_1(mig_7series_0_ui_addn_clk_2),
         .ui_clk(mig_7series_0_ui_clk),
         .ui_clk_sync_rst(mig_7series_0_ui_clk_sync_rst));
+  hdmi_proc_sys_reset_0_0 proc_sys_reset_0
+       (.aux_reset_in(1'b1),
+        .bus_struct_reset(proc_sys_reset_0_bus_struct_reset),
+        .dcm_locked(mig_7series_0_mmcm_locked),
+        .ext_reset_in(mig_7series_0_ui_clk_sync_rst),
+        .interconnect_aresetn(rst_mig_7series_0_100M_interconnect_aresetn),
+        .mb_debug_sys_rst(1'b0),
+        .mb_reset(rst_mig_7series_0_100M_mb_reset),
+        .peripheral_aresetn(rst_mig_7series_0_100M_peripheral_aresetn),
+        .slowest_sync_clk(mig_7series_0_ui_clk));
   hdmi_rgb2dvi_0_0 rgb2dvi_i0
        (.PixelClk(axi_dynclk_0_PXL_CLK_O),
         .SerialClk(axi_dynclk_0_PXL_CLK_5X_O),
@@ -1155,20 +1178,10 @@ module hdmi
         .vid_pHSync(v_axi4s_vid_out_0_vid_io_out_HSYNC),
         .vid_pVDE(v_axi4s_vid_out_0_vid_io_out_ACTIVE_VIDEO),
         .vid_pVSync(v_axi4s_vid_out_0_vid_io_out_VSYNC));
-  hdmi_rst_mig_7series_0_100M_0 rst_mig_7series_0_100M
-       (.aux_reset_in(1'b1),
-        .bus_struct_reset(SYS_Rst_1),
-        .dcm_locked(mig_7series_0_mmcm_locked),
-        .ext_reset_in(mig_7series_0_ui_clk_sync_rst),
-        .interconnect_aresetn(rst_mig_7series_0_100M_interconnect_aresetn),
-        .mb_debug_sys_rst(1'b0),
-        .mb_reset(rst_mig_7series_0_100M_mb_reset),
-        .peripheral_aresetn(rst_mig_7series_0_100M_peripheral_aresetn),
-        .slowest_sync_clk(mig_7series_0_ui_clk));
   hdmi_rst_mig_7series_0_pxl_0 rst_mig_7series_0_pxl
        (.aux_reset_in(1'b1),
         .dcm_locked(dvi2rgb_0_aPixelClkLckd),
-        .ext_reset_in(reset_1),
+        .ext_reset_in(rstsys_i),
         .mb_debug_sys_rst(1'b0),
         .peripheral_aresetn(rst_mig_7series_0_pxl_peripheral_aresetn),
         .peripheral_reset(rst_mig_7series_0_pxl_peripheral_reset),

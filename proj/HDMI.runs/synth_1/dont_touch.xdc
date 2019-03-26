@@ -63,9 +63,6 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==hdmi_mig_7serie
 # IP: C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rgb2dvi_0_0/hdmi_rgb2dvi_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==hdmi_rgb2dvi_0_0 || ORIG_REF_NAME==hdmi_rgb2dvi_0_0} -quiet] -quiet
 
-# IP: C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_100M_0/hdmi_rst_mig_7series_0_100M_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==hdmi_rst_mig_7series_0_100M_0 || ORIG_REF_NAME==hdmi_rst_mig_7series_0_100M_0} -quiet] -quiet
-
 # IP: C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_pxl_0/hdmi_rst_mig_7series_0_pxl_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==hdmi_rst_mig_7series_0_pxl_0 || ORIG_REF_NAME==hdmi_rst_mig_7series_0_pxl_0} -quiet] -quiet
 
@@ -89,6 +86,9 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==hdmi_xbar_1 || 
 
 # IP: C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_xbar_0/hdmi_xbar_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==hdmi_xbar_0 || ORIG_REF_NAME==hdmi_xbar_0} -quiet] -quiet
+
+# IP: c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_proc_sys_reset_0_0/hdmi_proc_sys_reset_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==hdmi_proc_sys_reset_0_0 || ORIG_REF_NAME==hdmi_proc_sys_reset_0_0} -quiet] -quiet
 
 # IP: c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_m00_regslice_0/hdmi_m00_regslice_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==hdmi_m00_regslice_0 || ORIG_REF_NAME==hdmi_m00_regslice_0} -quiet] -quiet
@@ -209,14 +209,6 @@ set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {R
 # XDC: c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rgb2dvi_0_0/src/rgb2dvi_clocks.xdc
 #dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==hdmi_rgb2dvi_0_0 || ORIG_REF_NAME==hdmi_rgb2dvi_0_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
-# XDC: c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_100M_0/hdmi_rst_mig_7series_0_100M_0_board.xdc
-set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==hdmi_rst_mig_7series_0_100M_0 || ORIG_REF_NAME==hdmi_rst_mig_7series_0_100M_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
-
-# XDC: c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_100M_0/hdmi_rst_mig_7series_0_100M_0.xdc
-#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==hdmi_rst_mig_7series_0_100M_0 || ORIG_REF_NAME==hdmi_rst_mig_7series_0_100M_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
-
-# XDC: c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_100M_0/hdmi_rst_mig_7series_0_100M_0_ooc.xdc
-
 # XDC: c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_pxl_0/hdmi_rst_mig_7series_0_pxl_0_board.xdc
 set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==hdmi_rst_mig_7series_0_pxl_0 || ORIG_REF_NAME==hdmi_rst_mig_7series_0_pxl_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
@@ -248,6 +240,14 @@ set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {R
 # XDC: c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_xbar_1/hdmi_xbar_1_ooc.xdc
 
 # XDC: c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_xbar_0/hdmi_xbar_0_ooc.xdc
+
+# XDC: c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_proc_sys_reset_0_0/hdmi_proc_sys_reset_0_0_board.xdc
+set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==hdmi_proc_sys_reset_0_0 || ORIG_REF_NAME==hdmi_proc_sys_reset_0_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_proc_sys_reset_0_0/hdmi_proc_sys_reset_0_0.xdc
+#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==hdmi_proc_sys_reset_0_0 || ORIG_REF_NAME==hdmi_proc_sys_reset_0_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_proc_sys_reset_0_0/hdmi_proc_sys_reset_0_0_ooc.xdc
 
 # XDC: c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_m00_regslice_0/hdmi_m00_regslice_0_ooc.xdc
 

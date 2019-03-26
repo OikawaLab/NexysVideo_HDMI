@@ -1,6 +1,6 @@
 
 *** Running vivado
-    with args -log hdmi_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source hdmi_wrapper.tcl
+    with args -log TOP.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source TOP.tcl
 
 
 ****** Vivado v2017.4 (64-bit)
@@ -8,19 +8,19 @@
   **** IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
     ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 
-source hdmi_wrapper.tcl -notrace
+source TOP.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/proj_HoloFrame/fpga/NexysVideo_HDMI/repo'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2017.4/data/ip'.
-add_files: Time (s): cpu = 00:00:08 ; elapsed = 00:00:15 . Memory (MB): peak = 385.430 ; gain = 97.688
-Command: synth_design -top hdmi_wrapper -part xc7a200tsbg484-1 -flatten_hierarchy none -directive RuntimeOptimized -fsm_extraction off
+add_files: Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 385.426 ; gain = 98.137
+Command: synth_design -top TOP -part xc7a200tsbg484-1 -flatten_hierarchy none -directive RuntimeOptimized -fsm_extraction off
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 285520 
+INFO: Helper process launched with PID 370956 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 527.203 ; gain = 140.832
+Starting RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 526.676 ; gain = 140.656
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-1565] actual for formal port rst is neither a static name nor a globally static expression [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/9097/src/axi_dynclk.vhd:225]
 WARNING: [Synth 8-1565] actual for formal port s1_clkout0 is neither a static name nor a globally static expression [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/9097/src/axi_dynclk.vhd:227]
@@ -34,7 +34,7 @@ WARNING: [Synth 8-1565] actual for formal port arst is neither a static name nor
 WARNING: [Synth 8-1565] actual for formal port arst is neither a static name nor a globally static expression [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/269e/src/dvi2rgb.vhd:161]
 WARNING: [Synth 8-1565] actual for formal port potherchrdy is neither a static name nor a globally static expression [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/269e/src/dvi2rgb.vhd:182]
 WARNING: [Synth 8-1565] actual for formal port potherchvld is neither a static name nor a globally static expression [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/269e/src/dvi2rgb.vhd:183]
-INFO: [Synth 8-638] synthesizing module 'hdmi_wrapper' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/proj/HDMI.srcs/sources_1/imports/hdl/hdmi_wrapper.v:12]
+INFO: [Synth 8-638] synthesizing module 'TOP' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/proj/HDMI.srcs/sources_1/imports/hdl/TOP.sv:12]
 INFO: [Synth 8-638] synthesizing module 'IOBUF' [C:/Xilinx/Vivado/2017.4/scripts/rt/data/unisim_comp.v:22655]
 	Parameter DRIVE bound to: 12 - type: integer 
 	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
@@ -133,7 +133,7 @@ INFO: [Synth 8-256] done synthesizing module 'MMCME2_ADV' (3#1) [C:/Xilinx/Vivad
 INFO: [Synth 8-256] done synthesizing module 'mmcme2_drp' (4#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/9097/src/mmcme2_drp.v:50]
 INFO: [Synth 8-256] done synthesizing module 'axi_dynclk' (5#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/9097/src/axi_dynclk.vhd:57]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_axi_dynclk_0_0' (6#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_axi_dynclk_0_0/synth/hdmi_axi_dynclk_0_0.vhd:86]
-WARNING: [Synth 8-350] instance 'axi_dynclk_i0' of module 'hdmi_axi_dynclk_0_0' requires 25 connections, but only 24 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:494]
+WARNING: [Synth 8-350] instance 'axi_dynclk_i0' of module 'hdmi_axi_dynclk_0_0' requires 25 connections, but only 24 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:506]
 INFO: [Synth 8-638] synthesizing module 'hdmi_axi_gpio_video_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_axi_gpio_video_0/synth/hdmi_axi_gpio_video_0.vhd:86]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_S_AXI_ADDR_WIDTH bound to: 9 - type: integer 
@@ -511,25 +511,25 @@ INFO: [Synth 8-256] done synthesizing module 'slave_attachment__parameterized0' 
 INFO: [Synth 8-256] done synthesizing module 'axi_lite_ipif__parameterized0' (17#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/cced/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2948]
 INFO: [Synth 8-256] done synthesizing module 'axi_intc' (18#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/cf04/hdl/axi_intc_v4_1_vh_rfs.vhd:3769]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_microblaze_0_axi_intc_0' (19#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_microblaze_0_axi_intc_0/synth/hdmi_microblaze_0_axi_intc_0.vhd:89]
-INFO: [Synth 8-638] synthesizing module 'hdmi_microblaze_0_axi_periph_0' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:2304]
-INFO: [Synth 8-638] synthesizing module 'm00_couplers_imp_ISV6MD' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4416]
-INFO: [Synth 8-256] done synthesizing module 'm00_couplers_imp_ISV6MD' (20#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4416]
-INFO: [Synth 8-638] synthesizing module 'm01_couplers_imp_1PTHESZ' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4548]
-INFO: [Synth 8-256] done synthesizing module 'm01_couplers_imp_1PTHESZ' (21#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4548]
-INFO: [Synth 8-638] synthesizing module 'm02_couplers_imp_194Y1GO' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4673]
-INFO: [Synth 8-256] done synthesizing module 'm02_couplers_imp_194Y1GO' (22#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4673]
-INFO: [Synth 8-638] synthesizing module 'm03_couplers_imp_HNMLR2' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4805]
-INFO: [Synth 8-256] done synthesizing module 'm03_couplers_imp_HNMLR2' (23#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4805]
-INFO: [Synth 8-638] synthesizing module 'm04_couplers_imp_P3CK7Y' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4937]
-INFO: [Synth 8-256] done synthesizing module 'm04_couplers_imp_P3CK7Y' (24#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4937]
-INFO: [Synth 8-638] synthesizing module 'm05_couplers_imp_1JBICYW' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5083]
-INFO: [Synth 8-256] done synthesizing module 'm05_couplers_imp_1JBICYW' (25#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5083]
-INFO: [Synth 8-638] synthesizing module 'm06_couplers_imp_1FVXMUR' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5215]
-INFO: [Synth 8-256] done synthesizing module 'm06_couplers_imp_1FVXMUR' (26#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5215]
-INFO: [Synth 8-638] synthesizing module 'm07_couplers_imp_AK5MKL' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5347]
-INFO: [Synth 8-256] done synthesizing module 'm07_couplers_imp_AK5MKL' (27#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5347]
-INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_110I5BK' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5479]
-INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_110I5BK' (28#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5479]
+INFO: [Synth 8-638] synthesizing module 'hdmi_microblaze_0_axi_periph_0' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:2317]
+INFO: [Synth 8-638] synthesizing module 'm00_couplers_imp_ISV6MD' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4429]
+INFO: [Synth 8-256] done synthesizing module 'm00_couplers_imp_ISV6MD' (20#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4429]
+INFO: [Synth 8-638] synthesizing module 'm01_couplers_imp_1PTHESZ' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4561]
+INFO: [Synth 8-256] done synthesizing module 'm01_couplers_imp_1PTHESZ' (21#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4561]
+INFO: [Synth 8-638] synthesizing module 'm02_couplers_imp_194Y1GO' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4686]
+INFO: [Synth 8-256] done synthesizing module 'm02_couplers_imp_194Y1GO' (22#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4686]
+INFO: [Synth 8-638] synthesizing module 'm03_couplers_imp_HNMLR2' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4818]
+INFO: [Synth 8-256] done synthesizing module 'm03_couplers_imp_HNMLR2' (23#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4818]
+INFO: [Synth 8-638] synthesizing module 'm04_couplers_imp_P3CK7Y' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4950]
+INFO: [Synth 8-256] done synthesizing module 'm04_couplers_imp_P3CK7Y' (24#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4950]
+INFO: [Synth 8-638] synthesizing module 'm05_couplers_imp_1JBICYW' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5096]
+INFO: [Synth 8-256] done synthesizing module 'm05_couplers_imp_1JBICYW' (25#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5096]
+INFO: [Synth 8-638] synthesizing module 'm06_couplers_imp_1FVXMUR' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5228]
+INFO: [Synth 8-256] done synthesizing module 'm06_couplers_imp_1FVXMUR' (26#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5228]
+INFO: [Synth 8-638] synthesizing module 'm07_couplers_imp_AK5MKL' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5360]
+INFO: [Synth 8-256] done synthesizing module 'm07_couplers_imp_AK5MKL' (27#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5360]
+INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_110I5BK' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5492]
+INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_110I5BK' (28#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5492]
 INFO: [Synth 8-638] synthesizing module 'hdmi_xbar_1' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_xbar_1/synth/hdmi_xbar_1.v:59]
 INFO: [Synth 8-638] synthesizing module 'axi_crossbar_v2_1_16_axi_crossbar' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/c631/hdl/axi_crossbar_v2_1_vl_rfs.v:4882]
 	Parameter C_FAMILY bound to: artix7 - type: string 
@@ -782,11 +782,11 @@ WARNING: [Synth 8-6014] Unused sequential element gen_debug_trans_seq.debug_r_be
 INFO: [Synth 8-256] done synthesizing module 'axi_crossbar_v2_1_16_crossbar_sasd' (37#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/c631/hdl/axi_crossbar_v2_1_vl_rfs.v:1240]
 INFO: [Synth 8-256] done synthesizing module 'axi_crossbar_v2_1_16_axi_crossbar' (38#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/c631/hdl/axi_crossbar_v2_1_vl_rfs.v:4882]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_xbar_1' (39#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_xbar_1/synth/hdmi_xbar_1.v:59]
-WARNING: [Synth 8-689] width (15) of port connection 'm_axi_arprot' does not match port width (24) of module 'hdmi_xbar_1' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:3531]
-WARNING: [Synth 8-689] width (15) of port connection 'm_axi_awprot' does not match port width (24) of module 'hdmi_xbar_1' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:3535]
-INFO: [Synth 8-256] done synthesizing module 'hdmi_microblaze_0_axi_periph_0' (40#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:2304]
-INFO: [Synth 8-638] synthesizing module 'hdmi_axi_mem_intercon_0' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1350]
-INFO: [Synth 8-638] synthesizing module 'm00_couplers_imp_1BVR2QS' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:3804]
+WARNING: [Synth 8-689] width (15) of port connection 'm_axi_arprot' does not match port width (24) of module 'hdmi_xbar_1' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:3544]
+WARNING: [Synth 8-689] width (15) of port connection 'm_axi_awprot' does not match port width (24) of module 'hdmi_xbar_1' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:3548]
+INFO: [Synth 8-256] done synthesizing module 'hdmi_microblaze_0_axi_periph_0' (40#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:2317]
+INFO: [Synth 8-638] synthesizing module 'hdmi_axi_mem_intercon_0' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1363]
+INFO: [Synth 8-638] synthesizing module 'm00_couplers_imp_1BVR2QS' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:3817]
 INFO: [Synth 8-638] synthesizing module 'hdmi_auto_ds_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_auto_ds_0/synth/hdmi_auto_ds_0.v:58]
 INFO: [Synth 8-638] synthesizing module 'axi_dwidth_converter_v2_1_15_top' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/1cdc/hdl/axi_dwidth_converter_v2_1_vlsyn_rfs.v:14462]
 	Parameter C_FAMILY bound to: artix7 - type: string 
@@ -1595,9 +1595,9 @@ INFO: [Synth 8-638] synthesizing module 'axi_infrastructure_v1_1_0_vector2axi__p
 INFO: [Synth 8-256] done synthesizing module 'axi_infrastructure_v1_1_0_vector2axi__parameterized0' (71#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/ec67/hdl/axi_infrastructure_v1_1_vl_rfs.v:474]
 INFO: [Synth 8-256] done synthesizing module 'axi_register_slice_v2_1_15_axi_register_slice__parameterized0' (71#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/3ed1/hdl/axi_register_slice_v2_1_vl_rfs.v:2300]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_m00_regslice_0' (72#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_m00_regslice_0/synth/hdmi_m00_regslice_0.v:58]
-WARNING: [Synth 8-350] instance 'm00_regslice' of module 'hdmi_m00_regslice_0' requires 72 connections, but only 70 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4343]
-INFO: [Synth 8-256] done synthesizing module 'm00_couplers_imp_1BVR2QS' (73#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:3804]
-INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_TGU8B5' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5625]
+WARNING: [Synth 8-350] instance 'm00_regslice' of module 'hdmi_m00_regslice_0' requires 72 connections, but only 70 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:4356]
+INFO: [Synth 8-256] done synthesizing module 'm00_couplers_imp_1BVR2QS' (73#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:3817]
+INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_TGU8B5' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5638]
 INFO: [Synth 8-638] synthesizing module 'hdmi_auto_rs_w_1' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_auto_rs_w_1/synth/hdmi_auto_rs_w_1.v:58]
 INFO: [Synth 8-638] synthesizing module 'axi_register_slice_v2_1_15_axi_register_slice__parameterized1' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/3ed1/hdl/axi_register_slice_v2_1_vl_rfs.v:2300]
 	Parameter C_FAMILY bound to: artix7 - type: string 
@@ -1918,7 +1918,7 @@ INFO: [Synth 8-638] synthesizing module 'axi_infrastructure_v1_1_0_vector2axi__p
 INFO: [Synth 8-256] done synthesizing module 'axi_infrastructure_v1_1_0_vector2axi__parameterized1' (73#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/ec67/hdl/axi_infrastructure_v1_1_vl_rfs.v:474]
 INFO: [Synth 8-256] done synthesizing module 'axi_register_slice_v2_1_15_axi_register_slice__parameterized1' (73#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/3ed1/hdl/axi_register_slice_v2_1_vl_rfs.v:2300]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_auto_rs_w_1' (74#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_auto_rs_w_1/synth/hdmi_auto_rs_w_1.v:58]
-WARNING: [Synth 8-350] instance 'auto_rs_w' of module 'hdmi_auto_rs_w_1' requires 34 connections, but only 33 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5784]
+WARNING: [Synth 8-350] instance 'auto_rs_w' of module 'hdmi_auto_rs_w_1' requires 34 connections, but only 33 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5797]
 INFO: [Synth 8-638] synthesizing module 'hdmi_auto_us_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_auto_us_0/synth/hdmi_auto_us_0.v:58]
 INFO: [Synth 8-638] synthesizing module 'axi_dwidth_converter_v2_1_15_top__parameterized0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/1cdc/hdl/axi_dwidth_converter_v2_1_vlsyn_rfs.v:14462]
 	Parameter C_FAMILY bound to: artix7 - type: string 
@@ -2576,8 +2576,8 @@ INFO: [Synth 8-638] synthesizing module 'axi_register_slice_v2_1_15_axic_registe
 INFO: [Synth 8-256] done synthesizing module 'axi_register_slice_v2_1_15_axic_register_slice__parameterized13' (79#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/3ed1/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
 INFO: [Synth 8-256] done synthesizing module 'axi_register_slice_v2_1_15_axi_register_slice__parameterized4' (79#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/3ed1/hdl/axi_register_slice_v2_1_vl_rfs.v:2300]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_s00_regslice_0' (80#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_s00_regslice_0/synth/hdmi_s00_regslice_0.v:58]
-INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_TGU8B5' (81#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5625]
-INFO: [Synth 8-638] synthesizing module 's01_couplers_imp_1WLJOPZ' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5890]
+INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_TGU8B5' (81#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5638]
+INFO: [Synth 8-638] synthesizing module 's01_couplers_imp_1WLJOPZ' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5903]
 INFO: [Synth 8-638] synthesizing module 'hdmi_auto_rs_w_2' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_auto_rs_w_2/synth/hdmi_auto_rs_w_2.v:58]
 INFO: [Synth 8-638] synthesizing module 'axi_register_slice_v2_1_15_axi_register_slice__parameterized5' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/3ed1/hdl/axi_register_slice_v2_1_vl_rfs.v:2300]
 	Parameter C_FAMILY bound to: artix7 - type: string 
@@ -2697,7 +2697,7 @@ INFO: [Synth 8-638] synthesizing module 'axi_register_slice_v2_1_15_axic_registe
 INFO: [Synth 8-256] done synthesizing module 'axi_register_slice_v2_1_15_axic_register_slice__parameterized14' (81#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/3ed1/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
 INFO: [Synth 8-256] done synthesizing module 'axi_register_slice_v2_1_15_axi_register_slice__parameterized5' (81#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/3ed1/hdl/axi_register_slice_v2_1_vl_rfs.v:2300]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_auto_rs_w_2' (82#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_auto_rs_w_2/synth/hdmi_auto_rs_w_2.v:58]
-WARNING: [Synth 8-350] instance 'auto_rs_w' of module 'hdmi_auto_rs_w_2' requires 40 connections, but only 39 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:6079]
+WARNING: [Synth 8-350] instance 'auto_rs_w' of module 'hdmi_auto_rs_w_2' requires 40 connections, but only 39 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:6092]
 INFO: [Synth 8-638] synthesizing module 'hdmi_auto_us_1' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_auto_us_1/synth/hdmi_auto_us_1.v:58]
 INFO: [Synth 8-638] synthesizing module 'axi_dwidth_converter_v2_1_15_top__parameterized1' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/1cdc/hdl/axi_dwidth_converter_v2_1_vlsyn_rfs.v:14462]
 	Parameter C_FAMILY bound to: artix7 - type: string 
@@ -3044,13 +3044,13 @@ INFO: [Synth 8-638] synthesizing module 'axi_register_slice_v2_1_15_axic_registe
 INFO: [Synth 8-256] done synthesizing module 'axi_register_slice_v2_1_15_axic_register_slice__parameterized15' (84#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/3ed1/hdl/axi_register_slice_v2_1_vl_rfs.v:189]
 INFO: [Synth 8-256] done synthesizing module 'axi_register_slice_v2_1_15_axi_register_slice__parameterized7' (84#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/3ed1/hdl/axi_register_slice_v2_1_vl_rfs.v:2300]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_s01_regslice_0' (85#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_s01_regslice_0/synth/hdmi_s01_regslice_0.v:58]
-INFO: [Synth 8-256] done synthesizing module 's01_couplers_imp_1WLJOPZ' (86#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5890]
-INFO: [Synth 8-638] synthesizing module 's02_couplers_imp_12NZA64' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:6203]
+INFO: [Synth 8-256] done synthesizing module 's01_couplers_imp_1WLJOPZ' (86#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:5903]
+INFO: [Synth 8-638] synthesizing module 's02_couplers_imp_12NZA64' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:6216]
 INFO: [Synth 8-638] synthesizing module 'hdmi_s02_regslice_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_s02_regslice_0/synth/hdmi_s02_regslice_0.v:58]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_s02_regslice_0' (87#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_s02_regslice_0/synth/hdmi_s02_regslice_0.v:58]
-WARNING: [Synth 8-350] instance 's02_regslice' of module 'hdmi_s02_regslice_0' requires 72 connections, but only 70 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:6482]
-INFO: [Synth 8-256] done synthesizing module 's02_couplers_imp_12NZA64' (88#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:6203]
-INFO: [Synth 8-638] synthesizing module 's03_couplers_imp_672J4A' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:6555]
+WARNING: [Synth 8-350] instance 's02_regslice' of module 'hdmi_s02_regslice_0' requires 72 connections, but only 70 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:6495]
+INFO: [Synth 8-256] done synthesizing module 's02_couplers_imp_12NZA64' (88#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:6216]
+INFO: [Synth 8-638] synthesizing module 's03_couplers_imp_672J4A' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:6568]
 INFO: [Synth 8-638] synthesizing module 'hdmi_s03_regslice_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_s03_regslice_0/synth/hdmi_s03_regslice_0.v:58]
 INFO: [Synth 8-638] synthesizing module 'axi_register_slice_v2_1_15_axi_register_slice__parameterized8' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/3ed1/hdl/axi_register_slice_v2_1_vl_rfs.v:2300]
 	Parameter C_FAMILY bound to: artix7 - type: string 
@@ -3165,8 +3165,8 @@ INFO: [Synth 8-638] synthesizing module 'axi_register_slice_v2_1_15_axi_register
 	Parameter G_AXI_RPAYLOAD_WIDTH bound to: 260 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'axi_register_slice_v2_1_15_axi_register_slice__parameterized8' (88#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/3ed1/hdl/axi_register_slice_v2_1_vl_rfs.v:2300]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_s03_regslice_0' (89#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_s03_regslice_0/synth/hdmi_s03_regslice_0.v:58]
-WARNING: [Synth 8-350] instance 's03_regslice' of module 'hdmi_s03_regslice_0' requires 34 connections, but only 33 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:6690]
-INFO: [Synth 8-256] done synthesizing module 's03_couplers_imp_672J4A' (90#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:6555]
+WARNING: [Synth 8-350] instance 's03_regslice' of module 'hdmi_s03_regslice_0' requires 34 connections, but only 33 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:6703]
+INFO: [Synth 8-256] done synthesizing module 's03_couplers_imp_672J4A' (90#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:6568]
 INFO: [Synth 8-638] synthesizing module 'hdmi_xbar_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_xbar_0/synth/hdmi_xbar_0.v:59]
 INFO: [Synth 8-638] synthesizing module 'axi_crossbar_v2_1_16_axi_crossbar__parameterized0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/c631/hdl/axi_crossbar_v2_1_vl_rfs.v:4882]
 	Parameter C_FAMILY bound to: artix7 - type: string 
@@ -4125,12 +4125,12 @@ WARNING: [Synth 8-6014] Unused sequential element gen_master_slots[1].gen_mi_wri
 INFO: [Synth 8-256] done synthesizing module 'axi_crossbar_v2_1_16_crossbar' (99#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/c631/hdl/axi_crossbar_v2_1_vl_rfs.v:2239]
 INFO: [Synth 8-256] done synthesizing module 'axi_crossbar_v2_1_16_axi_crossbar__parameterized0' (99#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/c631/hdl/axi_crossbar_v2_1_vl_rfs.v:4882]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_xbar_0' (100#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_xbar_0/synth/hdmi_xbar_0.v:59]
-WARNING: [Synth 8-689] width (3) of port connection 's_axi_awready' does not match port width (4) of module 'hdmi_xbar_0' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:2286]
-WARNING: [Synth 8-689] width (6) of port connection 's_axi_bresp' does not match port width (8) of module 'hdmi_xbar_0' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:2290]
-WARNING: [Synth 8-689] width (3) of port connection 's_axi_bvalid' does not match port width (4) of module 'hdmi_xbar_0' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:2291]
-WARNING: [Synth 8-689] width (3) of port connection 's_axi_wready' does not match port width (4) of module 'hdmi_xbar_0' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:2299]
-WARNING: [Synth 8-350] instance 'xbar' of module 'hdmi_xbar_0' requires 78 connections, but only 76 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:2225]
-INFO: [Synth 8-256] done synthesizing module 'hdmi_axi_mem_intercon_0' (101#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1350]
+WARNING: [Synth 8-689] width (3) of port connection 's_axi_awready' does not match port width (4) of module 'hdmi_xbar_0' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:2299]
+WARNING: [Synth 8-689] width (6) of port connection 's_axi_bresp' does not match port width (8) of module 'hdmi_xbar_0' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:2303]
+WARNING: [Synth 8-689] width (3) of port connection 's_axi_bvalid' does not match port width (4) of module 'hdmi_xbar_0' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:2304]
+WARNING: [Synth 8-689] width (3) of port connection 's_axi_wready' does not match port width (4) of module 'hdmi_xbar_0' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:2312]
+WARNING: [Synth 8-350] instance 'xbar' of module 'hdmi_xbar_0' requires 78 connections, but only 76 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:2238]
+INFO: [Synth 8-256] done synthesizing module 'hdmi_axi_mem_intercon_0' (101#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1363]
 INFO: [Synth 8-638] synthesizing module 'hdmi_axi_timer_0_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_axi_timer_0_0/synth/hdmi_axi_timer_0_0.vhd:90]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_COUNT_WIDTH bound to: 32 - type: integer 
@@ -4691,7 +4691,7 @@ INFO: [Synth 8-256] done synthesizing module 'slave_attachment__parameterized1' 
 INFO: [Synth 8-256] done synthesizing module 'axi_lite_ipif__parameterized1' (107#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/cced/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2948]
 INFO: [Synth 8-256] done synthesizing module 'axi_timer' (108#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/38c3/hdl/axi_timer_v2_0_vh_rfs.vhd:2141]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_axi_timer_0_0' (109#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_axi_timer_0_0/synth/hdmi_axi_timer_0_0.vhd:90]
-WARNING: [Synth 8-350] instance 'axi_timer_i0' of module 'hdmi_axi_timer_0_0' requires 26 connections, but only 23 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:868]
+WARNING: [Synth 8-350] instance 'axi_timer_i0' of module 'hdmi_axi_timer_0_0' requires 26 connections, but only 23 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:880]
 INFO: [Synth 8-638] synthesizing module 'hdmi_axi_uartlite_0_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_axi_uartlite_0_0/synth/hdmi_axi_uartlite_0_0.vhd:86]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_S_AXI_ACLK_FREQ_HZ bound to: 100000000 - type: integer 
@@ -4800,7 +4800,7 @@ INFO: [Synth 8-256] done synthesizing module 'slave_attachment__parameterized2' 
 INFO: [Synth 8-256] done synthesizing module 'axi_lite_ipif__parameterized2' (118#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/cced/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2948]
 INFO: [Synth 8-256] done synthesizing module 'axi_uartlite' (119#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/c778/hdl/axi_uartlite_v2_0_vh_rfs.vhd:2160]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_axi_uartlite_0_0' (120#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_axi_uartlite_0_0/synth/hdmi_axi_uartlite_0_0.vhd:86]
-WARNING: [Synth 8-350] instance 'axi_uartlite_i0' of module 'hdmi_axi_uartlite_0_0' requires 22 connections, but only 21 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:892]
+WARNING: [Synth 8-350] instance 'axi_uartlite_i0' of module 'hdmi_axi_uartlite_0_0' requires 22 connections, but only 21 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:904]
 INFO: [Synth 8-638] synthesizing module 'hdmi_microblaze_0_xlconcat_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_microblaze_0_xlconcat_0/synth/hdmi_microblaze_0_xlconcat_0.v:58]
 INFO: [Synth 8-638] synthesizing module 'xlconcat_v2_1_1_xlconcat' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/2f66/hdl/xlconcat_v2_1_vl_rfs.v:14]
 	Parameter IN0_WIDTH bound to: 1 - type: integer 
@@ -5060,7 +5060,7 @@ INFO: [Synth 8-226] default block is never used [c:/proj_HoloFrame/fpga/NexysVid
 INFO: [Synth 8-256] done synthesizing module 'EEPROM_8b' (133#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/269e/src/EEPROM_8b.vhd:85]
 INFO: [Synth 8-256] done synthesizing module 'dvi2rgb' (134#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/269e/src/dvi2rgb.vhd:110]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_dvi2rgb_0_0' (135#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_dvi2rgb_0_0/synth/hdmi_dvi2rgb_0_0.vhd:80]
-INFO: [Synth 8-638] synthesizing module 'local_memory_imp_1COPMFY' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:3570]
+INFO: [Synth 8-638] synthesizing module 'local_memory_imp_1COPMFY' [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:3583]
 INFO: [Synth 8-638] synthesizing module 'hdmi_dlmb_bram_if_cntlr_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_dlmb_bram_if_cntlr_0/synth/hdmi_dlmb_bram_if_cntlr_0.vhd:84]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_HIGHADDR bound to: 64'b0000000000000000000000000000000000000000000000000111111111111111 
@@ -5163,7 +5163,7 @@ INFO: [Synth 8-638] synthesizing module 'FDS' [C:/Xilinx/Vivado/2017.4/scripts/r
 INFO: [Synth 8-256] done synthesizing module 'FDS' (140#1) [C:/Xilinx/Vivado/2017.4/scripts/rt/data/unisim_comp.v:4087]
 INFO: [Synth 8-256] done synthesizing module 'lmb_v10' (141#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/78eb/hdl/lmb_v10_v3_0_vh_rfs.vhd:140]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_dlmb_v10_0' (142#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_dlmb_v10_0/synth/hdmi_dlmb_v10_0.vhd:89]
-WARNING: [Synth 8-350] instance 'dlmb_v10' of module 'hdmi_dlmb_v10_0' requires 25 connections, but only 24 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:3716]
+WARNING: [Synth 8-350] instance 'dlmb_v10' of module 'hdmi_dlmb_v10_0' requires 25 connections, but only 24 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:3729]
 INFO: [Synth 8-638] synthesizing module 'hdmi_ilmb_bram_if_cntlr_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_ilmb_bram_if_cntlr_0/synth/hdmi_ilmb_bram_if_cntlr_0.vhd:84]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_HIGHADDR bound to: 64'b0000000000000000000000000000000000000000000000000111111111111111 
@@ -5256,7 +5256,7 @@ INFO: [Synth 8-638] synthesizing module 'hdmi_ilmb_v10_0' [c:/proj_HoloFrame/fpg
 	Parameter C_EXT_RESET_HIGH bound to: 1 - type: integer 
 INFO: [Synth 8-3491] module 'lmb_v10' declared at 'c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/78eb/hdl/lmb_v10_v3_0_vh_rfs.vhd:92' bound to instance 'U0' of component 'lmb_v10' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_ilmb_v10_0/synth/hdmi_ilmb_v10_0.vhd:164]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_ilmb_v10_0' (144#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_ilmb_v10_0/synth/hdmi_ilmb_v10_0.vhd:89]
-WARNING: [Synth 8-350] instance 'ilmb_v10' of module 'hdmi_ilmb_v10_0' requires 25 connections, but only 24 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:3762]
+WARNING: [Synth 8-350] instance 'ilmb_v10' of module 'hdmi_ilmb_v10_0' requires 25 connections, but only 24 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:3775]
 INFO: [Synth 8-638] synthesizing module 'hdmi_lmb_bram_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_lmb_bram_0/synth/hdmi_lmb_bram_0.vhd:78]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_XDEVICEFAMILY bound to: artix7 - type: string 
@@ -5333,7 +5333,7 @@ INFO: [Synth 8-638] synthesizing module 'hdmi_lmb_bram_0' [c:/proj_HoloFrame/fpg
 	Parameter C_EST_POWER_SUMMARY bound to: Estimated Power for IP     :     20.388 mW - type: string 
 INFO: [Synth 8-3491] module 'blk_mem_gen_v8_4_1' declared at 'c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/67d8/hdl/blk_mem_gen_v8_4_vhsyn_rfs.vhd:195313' bound to instance 'U0' of component 'blk_mem_gen_v8_4_1' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_lmb_bram_0/synth/hdmi_lmb_bram_0.vhd:251]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_lmb_bram_0' (155#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_lmb_bram_0/synth/hdmi_lmb_bram_0.vhd:78]
-INFO: [Synth 8-256] done synthesizing module 'local_memory_imp_1COPMFY' (156#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:3570]
+INFO: [Synth 8-256] done synthesizing module 'local_memory_imp_1COPMFY' (156#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:3583]
 INFO: [Synth 8-638] synthesizing module 'hdmi_mdm_1_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mdm_1_0/synth/hdmi_mdm_1_0.vhd:74]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_JTAG_CHAIN bound to: 2 - type: integer 
@@ -5592,7 +5592,7 @@ INFO: [Synth 8-256] done synthesizing module 'JTAG_CONTROL' (162#1) [c:/proj_Hol
 INFO: [Synth 8-256] done synthesizing module 'MDM_Core' (163#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/8608/hdl/mdm_v3_2_vh_rfs.vhd:6649]
 INFO: [Synth 8-256] done synthesizing module 'MDM' (164#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/8608/hdl/mdm_v3_2_vh_rfs.vhd:14013]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_mdm_1_0' (165#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mdm_1_0/synth/hdmi_mdm_1_0.vhd:74]
-WARNING: [Synth 8-350] instance 'mdm_1' of module 'hdmi_mdm_1_0' requires 10 connections, but only 9 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:964]
+WARNING: [Synth 8-350] instance 'mdm_1' of module 'hdmi_mdm_1_0' requires 10 connections, but only 9 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:976]
 INFO: [Synth 8-638] synthesizing module 'hdmi_microblaze_0_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_microblaze_0_0/synth/hdmi_microblaze_0_0.vhd:194]
 	Parameter C_SCO bound to: 0 - type: integer 
 	Parameter C_FREQ bound to: 100000000 - type: integer 
@@ -5760,7 +5760,7 @@ INFO: [Synth 8-638] synthesizing module 'hdmi_microblaze_0_0' [c:/proj_HoloFrame
 	Parameter C_M_AXI_DC_BUSER_WIDTH bound to: 1 - type: integer 
 INFO: [Synth 8-3491] module 'MicroBlaze' declared at 'c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/4f30/hdl/microblaze_v10_0_vh_rfs.vhd:157134' bound to instance 'U0' of component 'MicroBlaze' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_microblaze_0_0/synth/hdmi_microblaze_0_0.vhd:962]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_microblaze_0_0' (247#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_microblaze_0_0/synth/hdmi_microblaze_0_0.vhd:194]
-WARNING: [Synth 8-350] instance 'microblaze_i0' of module 'hdmi_microblaze_0_0' requires 130 connections, but only 110 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:976]
+WARNING: [Synth 8-350] instance 'microblaze_i0' of module 'hdmi_microblaze_0_0' requires 130 connections, but only 110 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:988]
 INFO: [Synth 8-638] synthesizing module 'hdmi_mig_7series_0_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mig_7series_0_0/hdmi_mig_7series_0_0/user_design/rtl/hdmi_mig_7series_0_0.v:70]
 INFO: [Synth 8-638] synthesizing module 'hdmi_mig_7series_0_0_mig' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mig_7series_0_0/hdmi_mig_7series_0_0/user_design/rtl/hdmi_mig_7series_0_0_mig.v:75]
 	Parameter BANK_WIDTH bound to: 3 - type: integer 
@@ -9811,82 +9811,8 @@ WARNING: [Synth 8-3848] Net s_axi_ctrl_rready in module/entity hdmi_mig_7series_
 WARNING: [Synth 8-3848] Net device_temp_i in module/entity hdmi_mig_7series_0_0_mig does not have driver. [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mig_7series_0_0/hdmi_mig_7series_0_0/user_design/rtl/hdmi_mig_7series_0_0_mig.v:810]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_mig_7series_0_0_mig' (331#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mig_7series_0_0/hdmi_mig_7series_0_0/user_design/rtl/hdmi_mig_7series_0_0_mig.v:75]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_mig_7series_0_0' (332#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mig_7series_0_0/hdmi_mig_7series_0_0/user_design/rtl/hdmi_mig_7series_0_0.v:70]
-WARNING: [Synth 8-350] instance 'mig_i0' of module 'hdmi_mig_7series_0_0' requires 68 connections, but only 58 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1087]
-INFO: [Synth 8-638] synthesizing module 'hdmi_rgb2dvi_0_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rgb2dvi_0_0/synth/hdmi_rgb2dvi_0_0.vhd:72]
-	Parameter kGenerateSerialClk bound to: 0 - type: bool 
-	Parameter kClkPrimitive bound to: PLL - type: string 
-	Parameter kRstActiveHigh bound to: 0 - type: bool 
-	Parameter kClkRange bound to: 2 - type: integer 
-INFO: [Synth 8-3491] module 'rgb2dvi' declared at 'c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/dc1a/src/rgb2dvi.vhd:61' bound to instance 'U0' of component 'rgb2dvi' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rgb2dvi_0_0/synth/hdmi_rgb2dvi_0_0.vhd:119]
-INFO: [Synth 8-638] synthesizing module 'rgb2dvi' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/dc1a/src/rgb2dvi.vhd:89]
-	Parameter kGenerateSerialClk bound to: 0 - type: bool 
-	Parameter kClkPrimitive bound to: PLL - type: string 
-	Parameter kClkRange bound to: 2 - type: integer 
-	Parameter kRstActiveHigh bound to: 0 - type: bool 
-INFO: [Synth 8-638] synthesizing module 'OutputSERDES' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/dc1a/src/OutputSERDES.vhd:76]
-	Parameter kParallelWidth bound to: 10 - type: integer 
-	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
-	Parameter IOSTANDARD bound to: TMDS_33 - type: string 
-	Parameter SLEW bound to: SLOW - type: string 
-INFO: [Synth 8-113] binding component instance 'OutputBuffer' to cell 'OBUFDS' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/dc1a/src/OutputSERDES.vhd:83]
-	Parameter DATA_RATE_OQ bound to: DDR - type: string 
-	Parameter DATA_RATE_TQ bound to: SDR - type: string 
-	Parameter DATA_WIDTH bound to: 10 - type: integer 
-	Parameter INIT_OQ bound to: 1'b0 
-	Parameter INIT_TQ bound to: 1'b0 
-	Parameter IS_CLKDIV_INVERTED bound to: 1'b0 
-	Parameter IS_CLK_INVERTED bound to: 1'b0 
-	Parameter IS_D1_INVERTED bound to: 1'b0 
-	Parameter IS_D2_INVERTED bound to: 1'b0 
-	Parameter IS_D3_INVERTED bound to: 1'b0 
-	Parameter IS_D4_INVERTED bound to: 1'b0 
-	Parameter IS_D5_INVERTED bound to: 1'b0 
-	Parameter IS_D6_INVERTED bound to: 1'b0 
-	Parameter IS_D7_INVERTED bound to: 1'b0 
-	Parameter IS_D8_INVERTED bound to: 1'b0 
-	Parameter IS_T1_INVERTED bound to: 1'b0 
-	Parameter IS_T2_INVERTED bound to: 1'b0 
-	Parameter IS_T3_INVERTED bound to: 1'b0 
-	Parameter IS_T4_INVERTED bound to: 1'b0 
-	Parameter SERDES_MODE bound to: MASTER - type: string 
-	Parameter SRVAL_OQ bound to: 1'b0 
-	Parameter SRVAL_TQ bound to: 1'b0 
-	Parameter TBYTE_CTL bound to: FALSE - type: string 
-	Parameter TBYTE_SRC bound to: FALSE - type: string 
-	Parameter TRISTATE_WIDTH bound to: 1 - type: integer 
-INFO: [Synth 8-113] binding component instance 'SerializerMaster' to cell 'OSERDESE2' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/dc1a/src/OutputSERDES.vhd:92]
-	Parameter DATA_RATE_OQ bound to: DDR - type: string 
-	Parameter DATA_RATE_TQ bound to: SDR - type: string 
-	Parameter DATA_WIDTH bound to: 10 - type: integer 
-	Parameter INIT_OQ bound to: 1'b0 
-	Parameter INIT_TQ bound to: 1'b0 
-	Parameter IS_CLKDIV_INVERTED bound to: 1'b0 
-	Parameter IS_CLK_INVERTED bound to: 1'b0 
-	Parameter IS_D1_INVERTED bound to: 1'b0 
-	Parameter IS_D2_INVERTED bound to: 1'b0 
-	Parameter IS_D3_INVERTED bound to: 1'b0 
-	Parameter IS_D4_INVERTED bound to: 1'b0 
-	Parameter IS_D5_INVERTED bound to: 1'b0 
-	Parameter IS_D6_INVERTED bound to: 1'b0 
-	Parameter IS_D7_INVERTED bound to: 1'b0 
-	Parameter IS_D8_INVERTED bound to: 1'b0 
-	Parameter IS_T1_INVERTED bound to: 1'b0 
-	Parameter IS_T2_INVERTED bound to: 1'b0 
-	Parameter IS_T3_INVERTED bound to: 1'b0 
-	Parameter IS_T4_INVERTED bound to: 1'b0 
-	Parameter SERDES_MODE bound to: SLAVE - type: string 
-	Parameter SRVAL_OQ bound to: 1'b0 
-	Parameter SRVAL_TQ bound to: 1'b0 
-	Parameter TBYTE_CTL bound to: FALSE - type: string 
-	Parameter TBYTE_SRC bound to: FALSE - type: string 
-	Parameter TRISTATE_WIDTH bound to: 1 - type: integer 
-INFO: [Synth 8-113] binding component instance 'SerializerSlave' to cell 'OSERDESE2' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/dc1a/src/OutputSERDES.vhd:135]
-INFO: [Synth 8-256] done synthesizing module 'OutputSERDES' (333#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/dc1a/src/OutputSERDES.vhd:76]
-INFO: [Synth 8-638] synthesizing module 'TMDS_Encoder' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/dc1a/src/TMDS_Encoder.vhd:80]
-INFO: [Synth 8-256] done synthesizing module 'TMDS_Encoder' (334#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/dc1a/src/TMDS_Encoder.vhd:80]
-INFO: [Synth 8-256] done synthesizing module 'rgb2dvi' (335#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/dc1a/src/rgb2dvi.vhd:89]
-INFO: [Synth 8-256] done synthesizing module 'hdmi_rgb2dvi_0_0' (336#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rgb2dvi_0_0/synth/hdmi_rgb2dvi_0_0.vhd:72]
-INFO: [Synth 8-638] synthesizing module 'hdmi_rst_mig_7series_0_100M_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_100M_0/synth/hdmi_rst_mig_7series_0_100M_0.vhd:74]
+WARNING: [Synth 8-350] instance 'mig_i0' of module 'hdmi_mig_7series_0_0' requires 68 connections, but only 59 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1099]
+INFO: [Synth 8-638] synthesizing module 'hdmi_proc_sys_reset_0_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_proc_sys_reset_0_0/synth/hdmi_proc_sys_reset_0_0.vhd:74]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_EXT_RST_WIDTH bound to: 4 - type: integer 
 	Parameter C_AUX_RST_WIDTH bound to: 4 - type: integer 
@@ -9896,7 +9822,7 @@ INFO: [Synth 8-638] synthesizing module 'hdmi_rst_mig_7series_0_100M_0' [c:/proj
 	Parameter C_NUM_PERP_RST bound to: 1 - type: integer 
 	Parameter C_NUM_INTERCONNECT_ARESETN bound to: 1 - type: integer 
 	Parameter C_NUM_PERP_ARESETN bound to: 1 - type: integer 
-INFO: [Synth 8-3491] module 'proc_sys_reset' declared at 'c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1264' bound to instance 'U0' of component 'proc_sys_reset' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_100M_0/synth/hdmi_rst_mig_7series_0_100M_0.vhd:129]
+INFO: [Synth 8-3491] module 'proc_sys_reset' declared at 'c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1264' bound to instance 'U0' of component 'proc_sys_reset' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_proc_sys_reset_0_0/synth/hdmi_proc_sys_reset_0_0.vhd:129]
 INFO: [Synth 8-638] synthesizing module 'proc_sys_reset' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1323]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_EXT_RST_WIDTH bound to: 4 - type: integer 
@@ -9940,7 +9866,7 @@ INFO: [Synth 8-638] synthesizing module 'lpf' [c:/proj_HoloFrame/fpga/NexysVideo
 INFO: [Synth 8-3491] module 'SRL16' declared at 'C:/Xilinx/Vivado/2017.4/scripts/rt/data/unisim_comp.v:50689' bound to instance 'POR_SRL_I' of component 'SRL16' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:868]
 INFO: [Synth 8-638] synthesizing module 'SRL16' [C:/Xilinx/Vivado/2017.4/scripts/rt/data/unisim_comp.v:50689]
 	Parameter INIT bound to: 16'b0000000000000000 
-INFO: [Synth 8-256] done synthesizing module 'SRL16' (337#1) [C:/Xilinx/Vivado/2017.4/scripts/rt/data/unisim_comp.v:50689]
+INFO: [Synth 8-256] done synthesizing module 'SRL16' (333#1) [C:/Xilinx/Vivado/2017.4/scripts/rt/data/unisim_comp.v:50689]
 INFO: [Synth 8-638] synthesizing module 'cdc_sync__parameterized1' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
 	Parameter C_CDC_TYPE bound to: 1 - type: integer 
 	Parameter C_RESET_STATE bound to: 0 - type: integer 
@@ -9952,21 +9878,95 @@ INFO: [Synth 8-638] synthesizing module 'cdc_sync__parameterized1' [c:/proj_Holo
 INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_IN_cdc_to' to cell 'FDR' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:514]
 	Parameter INIT bound to: 1'b0 
 INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d2' to cell 'FDR' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:545]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d3' to cell 'FDR' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:554]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d4' to cell 'FDR' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:564]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d5' to cell 'FDR' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:574]
 INFO: [Common 17-14] Message 'Synth 8-113' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-	Parameter INIT bound to: 1'b0 
-INFO: [Synth 8-256] done synthesizing module 'cdc_sync__parameterized1' (337#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
-INFO: [Synth 8-256] done synthesizing module 'lpf' (338#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:816]
+INFO: [Synth 8-256] done synthesizing module 'cdc_sync__parameterized1' (333#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
+INFO: [Synth 8-256] done synthesizing module 'lpf' (334#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:816]
 INFO: [Synth 8-638] synthesizing module 'sequence_psr' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:301]
 INFO: [Synth 8-638] synthesizing module 'upcnt_n' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:125]
 	Parameter C_SIZE bound to: 6 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'upcnt_n' (339#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:125]
-INFO: [Synth 8-256] done synthesizing module 'sequence_psr' (340#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:301]
-INFO: [Synth 8-256] done synthesizing module 'proc_sys_reset' (341#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1323]
-INFO: [Synth 8-256] done synthesizing module 'hdmi_rst_mig_7series_0_100M_0' (342#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_100M_0/synth/hdmi_rst_mig_7series_0_100M_0.vhd:74]
-WARNING: [Synth 8-350] instance 'rst_mig_7series_0_100M' of module 'hdmi_rst_mig_7series_0_100M_0' requires 10 connections, but only 9 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1158]
+INFO: [Synth 8-256] done synthesizing module 'upcnt_n' (335#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:125]
+INFO: [Synth 8-256] done synthesizing module 'sequence_psr' (336#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:301]
+INFO: [Synth 8-256] done synthesizing module 'proc_sys_reset' (337#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1323]
+INFO: [Synth 8-256] done synthesizing module 'hdmi_proc_sys_reset_0_0' (338#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_proc_sys_reset_0_0/synth/hdmi_proc_sys_reset_0_0.vhd:74]
+WARNING: [Synth 8-350] instance 'proc_sys_reset_0' of module 'hdmi_proc_sys_reset_0_0' requires 10 connections, but only 9 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1159]
+INFO: [Synth 8-638] synthesizing module 'hdmi_rgb2dvi_0_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rgb2dvi_0_0/synth/hdmi_rgb2dvi_0_0.vhd:72]
+	Parameter kGenerateSerialClk bound to: 0 - type: bool 
+	Parameter kClkPrimitive bound to: PLL - type: string 
+	Parameter kRstActiveHigh bound to: 0 - type: bool 
+	Parameter kClkRange bound to: 2 - type: integer 
+INFO: [Synth 8-3491] module 'rgb2dvi' declared at 'c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/dc1a/src/rgb2dvi.vhd:61' bound to instance 'U0' of component 'rgb2dvi' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rgb2dvi_0_0/synth/hdmi_rgb2dvi_0_0.vhd:119]
+INFO: [Synth 8-638] synthesizing module 'rgb2dvi' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/dc1a/src/rgb2dvi.vhd:89]
+	Parameter kGenerateSerialClk bound to: 0 - type: bool 
+	Parameter kClkPrimitive bound to: PLL - type: string 
+	Parameter kClkRange bound to: 2 - type: integer 
+	Parameter kRstActiveHigh bound to: 0 - type: bool 
+INFO: [Synth 8-638] synthesizing module 'OutputSERDES' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/dc1a/src/OutputSERDES.vhd:76]
+	Parameter kParallelWidth bound to: 10 - type: integer 
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter IOSTANDARD bound to: TMDS_33 - type: string 
+	Parameter SLEW bound to: SLOW - type: string 
+	Parameter DATA_RATE_OQ bound to: DDR - type: string 
+	Parameter DATA_RATE_TQ bound to: SDR - type: string 
+	Parameter DATA_WIDTH bound to: 10 - type: integer 
+	Parameter INIT_OQ bound to: 1'b0 
+	Parameter INIT_TQ bound to: 1'b0 
+	Parameter IS_CLKDIV_INVERTED bound to: 1'b0 
+	Parameter IS_CLK_INVERTED bound to: 1'b0 
+	Parameter IS_D1_INVERTED bound to: 1'b0 
+	Parameter IS_D2_INVERTED bound to: 1'b0 
+	Parameter IS_D3_INVERTED bound to: 1'b0 
+	Parameter IS_D4_INVERTED bound to: 1'b0 
+	Parameter IS_D5_INVERTED bound to: 1'b0 
+	Parameter IS_D6_INVERTED bound to: 1'b0 
+	Parameter IS_D7_INVERTED bound to: 1'b0 
+	Parameter IS_D8_INVERTED bound to: 1'b0 
+	Parameter IS_T1_INVERTED bound to: 1'b0 
+	Parameter IS_T2_INVERTED bound to: 1'b0 
+	Parameter IS_T3_INVERTED bound to: 1'b0 
+	Parameter IS_T4_INVERTED bound to: 1'b0 
+	Parameter SERDES_MODE bound to: MASTER - type: string 
+	Parameter SRVAL_OQ bound to: 1'b0 
+	Parameter SRVAL_TQ bound to: 1'b0 
+	Parameter TBYTE_CTL bound to: FALSE - type: string 
+	Parameter TBYTE_SRC bound to: FALSE - type: string 
+	Parameter TRISTATE_WIDTH bound to: 1 - type: integer 
+	Parameter DATA_RATE_OQ bound to: DDR - type: string 
+	Parameter DATA_RATE_TQ bound to: SDR - type: string 
+	Parameter DATA_WIDTH bound to: 10 - type: integer 
+	Parameter INIT_OQ bound to: 1'b0 
+	Parameter INIT_TQ bound to: 1'b0 
+	Parameter IS_CLKDIV_INVERTED bound to: 1'b0 
+	Parameter IS_CLK_INVERTED bound to: 1'b0 
+	Parameter IS_D1_INVERTED bound to: 1'b0 
+	Parameter IS_D2_INVERTED bound to: 1'b0 
+	Parameter IS_D3_INVERTED bound to: 1'b0 
+	Parameter IS_D4_INVERTED bound to: 1'b0 
+	Parameter IS_D5_INVERTED bound to: 1'b0 
+	Parameter IS_D6_INVERTED bound to: 1'b0 
+	Parameter IS_D7_INVERTED bound to: 1'b0 
+	Parameter IS_D8_INVERTED bound to: 1'b0 
+	Parameter IS_T1_INVERTED bound to: 1'b0 
+	Parameter IS_T2_INVERTED bound to: 1'b0 
+	Parameter IS_T3_INVERTED bound to: 1'b0 
+	Parameter IS_T4_INVERTED bound to: 1'b0 
+	Parameter SERDES_MODE bound to: SLAVE - type: string 
+	Parameter SRVAL_OQ bound to: 1'b0 
+	Parameter SRVAL_TQ bound to: 1'b0 
+	Parameter TBYTE_CTL bound to: FALSE - type: string 
+	Parameter TBYTE_SRC bound to: FALSE - type: string 
+	Parameter TRISTATE_WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'OutputSERDES' (339#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/dc1a/src/OutputSERDES.vhd:76]
+INFO: [Synth 8-638] synthesizing module 'TMDS_Encoder' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/dc1a/src/TMDS_Encoder.vhd:80]
+INFO: [Synth 8-256] done synthesizing module 'TMDS_Encoder' (340#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/dc1a/src/TMDS_Encoder.vhd:80]
+INFO: [Synth 8-256] done synthesizing module 'rgb2dvi' (341#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/dc1a/src/rgb2dvi.vhd:89]
+INFO: [Synth 8-256] done synthesizing module 'hdmi_rgb2dvi_0_0' (342#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rgb2dvi_0_0/synth/hdmi_rgb2dvi_0_0.vhd:72]
 INFO: [Synth 8-638] synthesizing module 'hdmi_rst_mig_7series_0_pxl_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_pxl_0/synth/hdmi_rst_mig_7series_0_pxl_0.vhd:74]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_EXT_RST_WIDTH bound to: 4 - type: integer 
@@ -10017,7 +10017,7 @@ INFO: [Synth 8-3491] module 'SRL16' declared at 'C:/Xilinx/Vivado/2017.4/scripts
 INFO: [Synth 8-256] done synthesizing module 'lpf__parameterized0' (342#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:816]
 INFO: [Synth 8-256] done synthesizing module 'proc_sys_reset__parameterized1' (342#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1323]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_rst_mig_7series_0_pxl_0' (343#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_pxl_0/synth/hdmi_rst_mig_7series_0_pxl_0.vhd:74]
-WARNING: [Synth 8-350] instance 'rst_mig_7series_0_pxl' of module 'hdmi_rst_mig_7series_0_pxl_0' requires 10 connections, but only 7 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1168]
+WARNING: [Synth 8-350] instance 'rst_mig_7series_0_pxl' of module 'hdmi_rst_mig_7series_0_pxl_0' requires 10 connections, but only 7 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1181]
 INFO: [Synth 8-638] synthesizing module 'hdmi_v_axi4s_vid_out_0_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_axi4s_vid_out_0_0/synth/hdmi_v_axi4s_vid_out_0_0.v:58]
 INFO: [Synth 8-638] synthesizing module 'v_axi4s_vid_out_v4_0_8' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/fc47/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:2059]
 	Parameter C_FAMILY bound to: artix7 - type: string 
@@ -10276,7 +10276,7 @@ WARNING: [Synth 8-3848] Net fifo_underflow_from_remap in module/entity v_axi4s_v
 INFO: [Synth 8-256] done synthesizing module 'v_axi4s_vid_out_v4_0_8' (356#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/fc47/hdl/v_axi4s_vid_out_v4_0_vl_rfs.v:2059]
 INFO: [Synth 8-5772] Detected attribute (* rw_addr_collision = "yes" *) on RAM gen_wr_a.gen_word_narrow.mem_reg 
 INFO: [Synth 8-256] done synthesizing module 'hdmi_v_axi4s_vid_out_0_0' (357#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_axi4s_vid_out_0_0/synth/hdmi_v_axi4s_vid_out_0_0.v:58]
-WARNING: [Synth 8-350] instance 'v_axi4s_vid_out_0' of module 'hdmi_v_axi4s_vid_out_0_0' requires 28 connections, but only 20 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1176]
+WARNING: [Synth 8-350] instance 'v_axi4s_vid_out_0' of module 'hdmi_v_axi4s_vid_out_0_0' requires 28 connections, but only 20 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1189]
 INFO: [Synth 8-638] synthesizing module 'hdmi_v_vid_in_axi4s_0_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_vid_in_axi4s_0_0/synth/hdmi_v_vid_in_axi4s_0_0.v:57]
 INFO: [Synth 8-638] synthesizing module 'v_vid_in_axi4s_v4_0_7' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/f931/hdl/v_vid_in_axi4s_v4_0_vl_rfs.v:1714]
 	Parameter C_FAMILY bound to: artix7 - type: string 
@@ -10537,7 +10537,7 @@ WARNING: [Synth 8-3848] Net fifo_overflow_from_remap in module/entity v_vid_in_a
 INFO: [Synth 8-256] done synthesizing module 'v_vid_in_axi4s_v4_0_7' (367#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/f931/hdl/v_vid_in_axi4s_v4_0_vl_rfs.v:1714]
 INFO: [Synth 8-5772] Detected attribute (* rw_addr_collision = "yes" *) on RAM gen_wr_a.gen_word_narrow.mem_reg 
 INFO: [Synth 8-256] done synthesizing module 'hdmi_v_vid_in_axi4s_0_0' (368#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_vid_in_axi4s_0_0/synth/hdmi_v_vid_in_axi4s_0_0.v:57]
-WARNING: [Synth 8-350] instance 'v_vid_in_axi4s_0' of module 'hdmi_v_vid_in_axi4s_0_0' requires 28 connections, but only 22 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1197]
+WARNING: [Synth 8-350] instance 'v_vid_in_axi4s_0' of module 'hdmi_v_vid_in_axi4s_0_0' requires 28 connections, but only 22 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1210]
 INFO: [Synth 8-638] synthesizing module 'hdmi_axi_vdma_0_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_axi_vdma_0_0/synth/hdmi_axi_vdma_0_0.vhd:131]
 	Parameter C_S_AXI_LITE_ADDR_WIDTH bound to: 9 - type: integer 
 	Parameter C_S_AXI_LITE_DATA_WIDTH bound to: 32 - type: integer 
@@ -13038,7 +13038,7 @@ INFO: [Synth 8-5772] Detected attribute (* rw_addr_collision = "no" *) on RAM ge
 INFO: [Synth 8-5772] Detected attribute (* rw_addr_collision = "yes" *) on RAM gen_wr_a.gen_word_narrow.mem_reg 
 INFO: [Synth 8-5772] Detected attribute (* rw_addr_collision = "no" *) on RAM gen_wr_a.gen_word_narrow.mem_reg 
 INFO: [Synth 8-256] done synthesizing module 'hdmi_axi_vdma_0_0' (437#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_axi_vdma_0_0/synth/hdmi_axi_vdma_0_0.vhd:131]
-WARNING: [Synth 8-350] instance 'vdma_i0' of module 'hdmi_axi_vdma_0_0' requires 67 connections, but only 64 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1220]
+WARNING: [Synth 8-350] instance 'vdma_i0' of module 'hdmi_axi_vdma_0_0' requires 67 connections, but only 64 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1233]
 INFO: [Synth 8-638] synthesizing module 'hdmi_v_tc_0_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_tc_0_0/synth/hdmi_v_tc_0_0.vhd:96]
 	Parameter C_HAS_AXI4_LITE bound to: 1 - type: integer 
 	Parameter C_HAS_INTC_IF bound to: 0 - type: integer 
@@ -13152,7 +13152,7 @@ INFO: [Synth 8-226] default block is never used [c:/proj_HoloFrame/fpga/NexysVid
 INFO: [Synth 8-256] done synthesizing module 'slave_attachment__parameterized3' (437#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/cced/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2341]
 INFO: [Synth 8-256] done synthesizing module 'axi_lite_ipif__parameterized3' (437#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/cced/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2948]
 INFO: [Synth 8-256] done synthesizing module 'hdmi_v_tc_0_0' (444#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_tc_0_0/synth/hdmi_v_tc_0_0.vhd:96]
-WARNING: [Synth 8-350] instance 'vtimctrl_i0' of module 'hdmi_v_tc_0_0' requires 32 connections, but only 31 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1285]
+WARNING: [Synth 8-350] instance 'vtimctrl_i0' of module 'hdmi_v_tc_0_0' requires 32 connections, but only 31 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1298]
 INFO: [Synth 8-638] synthesizing module 'hdmi_v_tc_1_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_tc_1_0/synth/hdmi_v_tc_1_0.vhd:93]
 	Parameter C_HAS_AXI4_LITE bound to: 1 - type: integer 
 	Parameter C_HAS_INTC_IF bound to: 1 - type: integer 
@@ -13240,7 +13240,7 @@ INFO: [Synth 8-638] synthesizing module 'hdmi_v_tc_1_0' [c:/proj_HoloFrame/fpga/
 	Parameter C_GEN_FIELDID_EN bound to: 0 - type: integer 
 	Parameter C_DET_FIELDID_EN bound to: 0 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'hdmi_v_tc_1_0' (446#1) [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_tc_1_0/synth/hdmi_v_tc_1_0.vhd:93]
-WARNING: [Synth 8-350] instance 'vtimctrl_i1' of module 'hdmi_v_tc_1_0' requires 29 connections, but only 28 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1317]
+WARNING: [Synth 8-350] instance 'vtimctrl_i1' of module 'hdmi_v_tc_1_0' requires 29 connections, but only 28 given [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/synth/hdmi.v:1330]
 INFO: [Synth 8-638] synthesizing module 'hdmi_xlconstant_0_0' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_xlconstant_0_0/synth/hdmi_xlconstant_0_0.v:57]
 INFO: [Synth 8-638] synthesizing module 'xlconstant_v1_1_3_xlconstant' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/0750/hdl/xlconstant_v1_1_vl_rfs.v:23]
 	Parameter CONST_VAL bound to: 1 - type: integer 
@@ -13258,7 +13258,7 @@ INFO: [Synth 8-5772] Detected attribute (* rw_addr_collision = "yes" *) on RAM g
 INFO: [Synth 8-5772] Detected attribute (* rw_addr_collision = "no" *) on RAM gen_wr_a.gen_word_narrow.mem_reg 
 INFO: [Synth 8-5772] Detected attribute (* rw_addr_collision = "yes" *) on RAM gen_wr_a.gen_word_narrow.mem_reg 
 INFO: [Synth 8-5772] Detected attribute (* rw_addr_collision = "no" *) on RAM gen_wr_a.gen_word_narrow.mem_reg 
-INFO: [Synth 8-256] done synthesizing module 'hdmi_wrapper' (450#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/proj/HDMI.srcs/sources_1/imports/hdl/hdmi_wrapper.v:12]
+INFO: [Synth 8-256] done synthesizing module 'TOP' (450#1) [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/proj/HDMI.srcs/sources_1/imports/hdl/TOP.sv:12]
 WARNING: [Synth 8-3331] design tc_detector has unconnected port det_interlace
 WARNING: [Synth 8-3331] design tc_detector has unconnected port hblank
 WARNING: [Synth 8-3331] design tc_detector has unconnected port vblank
@@ -13361,7 +13361,7 @@ WARNING: [Synth 8-3331] design tc_top__parameterized0 has unconnected port gen_h
 WARNING: [Synth 8-3331] design tc_top__parameterized0 has unconnected port gen_hsync_start[3]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:06:26 ; elapsed = 00:06:35 . Memory (MB): peak = 1597.742 ; gain = 1211.371
+Finished RTL Elaboration : Time (s): cpu = 00:06:07 ; elapsed = 00:06:12 . Memory (MB): peak = 1598.730 ; gain = 1212.711
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -13472,7 +13472,7 @@ WARNING: [Synth 8-3295] tying undriven pin u_ddr_mc_phy:mem_dq_in[12] to constan
 WARNING: [Synth 8-3295] tying undriven pin u_ddr_mc_phy:mem_dq_in[11] to constant 0 [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mig_7series_0_0/hdmi_mig_7series_0_0/user_design/rtl/phy/mig_7series_v4_0_ddr_mc_phy_wrapper.v:1579]
 INFO: [Common 17-14] Message 'Synth 8-3295' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:06:31 ; elapsed = 00:06:44 . Memory (MB): peak = 1597.742 ; gain = 1211.371
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:06:12 ; elapsed = 00:06:19 . Memory (MB): peak = 1598.730 ; gain = 1212.711
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 2061 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
@@ -13497,12 +13497,12 @@ Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_dvi
 Finished Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_dvi2rgb_0_0/src/dvi2rgb.xdc] for cell 'hdmi_i/dvi2rgb_i0/U0'
 Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mdm_1_0/hdmi_mdm_1_0.xdc] for cell 'hdmi_i/mdm_1/U0'
 Finished Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mdm_1_0/hdmi_mdm_1_0.xdc] for cell 'hdmi_i/mdm_1/U0'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mdm_1_0/hdmi_mdm_1_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/hdmi_wrapper_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/hdmi_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mdm_1_0/hdmi_mdm_1_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/TOP_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/TOP_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_microblaze_0_0/hdmi_microblaze_0_0.xdc] for cell 'hdmi_i/microblaze_i0/U0'
 Finished Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_microblaze_0_0/hdmi_microblaze_0_0.xdc] for cell 'hdmi_i/microblaze_i0/U0'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_microblaze_0_0/hdmi_microblaze_0_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/hdmi_wrapper_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/hdmi_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_microblaze_0_0/hdmi_microblaze_0_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/TOP_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/TOP_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_microblaze_0_axi_intc_0/hdmi_microblaze_0_axi_intc_0.xdc] for cell 'hdmi_i/axi_intc_i0/U0'
 Finished Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_microblaze_0_axi_intc_0/hdmi_microblaze_0_axi_intc_0.xdc] for cell 'hdmi_i/axi_intc_i0/U0'
 Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_dlmb_v10_0/hdmi_dlmb_v10_0.xdc] for cell 'hdmi_i/local_memory/dlmb_v10/U0'
@@ -13514,29 +13514,29 @@ WARNING: [Vivado 12-4777] Setting CLOCK_DEDICATED_ROUTE constraint on the PARENT
 WARNING: [Designutils 20-1567] Use of 'set_multicycle_path' with '-hold' is not supported by synthesis. The constraint will not be passed to synthesis. [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mig_7series_0_0/hdmi_mig_7series_0_0/user_design/constraints/hdmi_mig_7series_0_0.xdc:349]
 WARNING: [Designutils 20-1567] Use of 'set_multicycle_path' with '-hold' is not supported by synthesis. The constraint will not be passed to synthesis. [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mig_7series_0_0/hdmi_mig_7series_0_0/user_design/constraints/hdmi_mig_7series_0_0.xdc:356]
 Finished Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mig_7series_0_0/hdmi_mig_7series_0_0/user_design/constraints/hdmi_mig_7series_0_0.xdc] for cell 'hdmi_i/mig_i0'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mig_7series_0_0/hdmi_mig_7series_0_0/user_design/constraints/hdmi_mig_7series_0_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/hdmi_wrapper_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/hdmi_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mig_7series_0_0/hdmi_mig_7series_0_0/user_design/constraints/hdmi_mig_7series_0_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/TOP_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/TOP_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mig_7series_0_0/hdmi_mig_7series_0_0_board.xdc] for cell 'hdmi_i/mig_i0'
 Finished Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_mig_7series_0_0/hdmi_mig_7series_0_0_board.xdc] for cell 'hdmi_i/mig_i0'
 Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rgb2dvi_0_0/src/rgb2dvi.xdc] for cell 'hdmi_i/rgb2dvi_i0/U0'
 Finished Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rgb2dvi_0_0/src/rgb2dvi.xdc] for cell 'hdmi_i/rgb2dvi_i0/U0'
-Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_100M_0/hdmi_rst_mig_7series_0_100M_0_board.xdc] for cell 'hdmi_i/rst_mig_7series_0_100M/U0'
-Finished Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_100M_0/hdmi_rst_mig_7series_0_100M_0_board.xdc] for cell 'hdmi_i/rst_mig_7series_0_100M/U0'
-Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_100M_0/hdmi_rst_mig_7series_0_100M_0.xdc] for cell 'hdmi_i/rst_mig_7series_0_100M/U0'
-Finished Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_100M_0/hdmi_rst_mig_7series_0_100M_0.xdc] for cell 'hdmi_i/rst_mig_7series_0_100M/U0'
 Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_pxl_0/hdmi_rst_mig_7series_0_pxl_0_board.xdc] for cell 'hdmi_i/rst_mig_7series_0_pxl/U0'
 Finished Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_pxl_0/hdmi_rst_mig_7series_0_pxl_0_board.xdc] for cell 'hdmi_i/rst_mig_7series_0_pxl/U0'
 Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_pxl_0/hdmi_rst_mig_7series_0_pxl_0.xdc] for cell 'hdmi_i/rst_mig_7series_0_pxl/U0'
 Finished Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_rst_mig_7series_0_pxl_0/hdmi_rst_mig_7series_0_pxl_0.xdc] for cell 'hdmi_i/rst_mig_7series_0_pxl/U0'
+Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_proc_sys_reset_0_0/hdmi_proc_sys_reset_0_0_board.xdc] for cell 'hdmi_i/proc_sys_reset_0/U0'
+Finished Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_proc_sys_reset_0_0/hdmi_proc_sys_reset_0_0_board.xdc] for cell 'hdmi_i/proc_sys_reset_0/U0'
+Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_proc_sys_reset_0_0/hdmi_proc_sys_reset_0_0.xdc] for cell 'hdmi_i/proc_sys_reset_0/U0'
+Finished Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_proc_sys_reset_0_0/hdmi_proc_sys_reset_0_0.xdc] for cell 'hdmi_i/proc_sys_reset_0/U0'
 INFO: [Timing 38-2] Deriving generated clocks
 Parsing XDC File [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/constraints/NexysVideo_Master.xdc]
 Finished Parsing XDC File [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/constraints/NexysVideo_Master.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/constraints/NexysVideo_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/hdmi_wrapper_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/hdmi_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/constraints/NexysVideo_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/TOP_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/TOP_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Parsing XDC File [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/proj/HDMI.runs/synth_1/dont_touch.xdc]
 Finished Parsing XDC File [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/proj/HDMI.runs/synth_1/dont_touch.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/proj/HDMI.runs/synth_1/dont_touch.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/hdmi_wrapper_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/hdmi_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/proj_HoloFrame/fpga/NexysVideo_HDMI/proj/HDMI.runs/synth_1/dont_touch.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/TOP_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/TOP_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 INFO: [Timing 38-2] Deriving generated clocks
 Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_axi_vdma_0_0/hdmi_axi_vdma_0_0_clocks.xdc] for cell 'hdmi_i/vdma_i0/U0'
 Finished Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_axi_vdma_0_0/hdmi_axi_vdma_0_0_clocks.xdc] for cell 'hdmi_i/vdma_i0/U0'
@@ -13548,12 +13548,12 @@ Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_a
 Finished Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_axi4s_vid_out_0_0/hdmi_v_axi4s_vid_out_0_0_clocks.xdc] for cell 'hdmi_i/v_axi4s_vid_out_0/inst'
 Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_tc_0_0/hdmi_v_tc_0_0_clocks.xdc] for cell 'hdmi_i/vtimctrl_i0/U0'
 Finished Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_tc_0_0/hdmi_v_tc_0_0_clocks.xdc] for cell 'hdmi_i/vtimctrl_i0/U0'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_tc_0_0/hdmi_v_tc_0_0_clocks.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/hdmi_wrapper_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/hdmi_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_tc_0_0/hdmi_v_tc_0_0_clocks.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/TOP_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/TOP_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_tc_1_0/hdmi_v_tc_1_0_clocks.xdc] for cell 'hdmi_i/vtimctrl_i1/U0'
 Finished Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_tc_1_0/hdmi_v_tc_1_0_clocks.xdc] for cell 'hdmi_i/vtimctrl_i1/U0'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_tc_1_0/hdmi_v_tc_1_0_clocks.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/hdmi_wrapper_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/hdmi_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_tc_1_0/hdmi_v_tc_1_0_clocks.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/TOP_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/TOP_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_vid_in_axi4s_0_0/hdmi_v_vid_in_axi4s_0_0_clocks.xdc] for cell 'hdmi_i/v_vid_in_axi4s_0/inst'
 Finished Parsing XDC File [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ip/hdmi_v_vid_in_axi4s_0_0/hdmi_v_vid_in_axi4s_0_0_clocks.xdc] for cell 'hdmi_i/v_vid_in_axi4s_0/inst'
 Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_async_rst.tcl] for cell 'hdmi_i/axi_interconn_i1/m00_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_READ.read_addr_inst/cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst'
@@ -13562,8 +13562,8 @@ Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_async
 Finished Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_async_rst.tcl] for cell 'hdmi_i/axi_interconn_i1/m00_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst'
 Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_async_rst.tcl] for cell 'hdmi_i/axi_interconn_i1/m00_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst'
 Finished Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_async_rst.tcl] for cell 'hdmi_i/axi_interconn_i1/m00_couplers/auto_ds/inst/gen_downsizer.gen_simple_downsizer.axi_downsizer_inst/USE_WRITE.write_addr_inst/cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_async_rst.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/hdmi_wrapper_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/hdmi_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_async_rst.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/TOP_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/TOP_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'hdmi_i/v_vid_in_axi4s_0/inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst'
 Finished Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'hdmi_i/v_vid_in_axi4s_0/inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst'
 Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'hdmi_i/v_vid_in_axi4s_0/inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst'
@@ -13572,16 +13572,16 @@ Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.
 Finished Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'hdmi_i/v_vid_in_axi4s_0/inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_dc_inst'
 Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'hdmi_i/v_vid_in_axi4s_0/inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_dc_inst'
 Finished Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl] for cell 'hdmi_i/v_vid_in_axi4s_0/inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_dc_inst'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/hdmi_wrapper_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/hdmi_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/TOP_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/TOP_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'hdmi_i/v_axi4s_vid_out_0/inst/CDC_SINGLE_REMAP_UNDERFLOW_INST/xpm_cdc_single_inst'
 Finished Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'hdmi_i/v_axi4s_vid_out_0/inst/CDC_SINGLE_REMAP_UNDERFLOW_INST/xpm_cdc_single_inst'
 Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'hdmi_i/v_vid_in_axi4s_0/inst/CDC_SINGLE_COUPLER_OVERFLOW_INST/xpm_cdc_single_inst'
 Finished Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'hdmi_i/v_vid_in_axi4s_0/inst/CDC_SINGLE_COUPLER_OVERFLOW_INST/xpm_cdc_single_inst'
 Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'hdmi_i/v_vid_in_axi4s_0/inst/CDC_SINGLE_REMAP_OVERFLOW_INST/xpm_cdc_single_inst'
 Finished Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'hdmi_i/v_vid_in_axi4s_0/inst/CDC_SINGLE_REMAP_OVERFLOW_INST/xpm_cdc_single_inst'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/hdmi_wrapper_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/hdmi_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/TOP_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/TOP_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'hdmi_i/v_vid_in_axi4s_0/inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.rrst_wr_inst'
 Finished Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'hdmi_i/v_vid_in_axi4s_0/inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.rrst_wr_inst'
 Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_sync_rst.tcl] for cell 'hdmi_i/v_vid_in_axi4s_0/inst/COUPLER_INST/generate_async_fifo.FIFO_INST/XPM_FIFO_ASYNC_INST/gnuram_async_fifo.xpm_fifo_base_inst/xpm_fifo_rst_inst/gen_rst_ic.wrst_rd_inst'
@@ -13596,8 +13596,8 @@ Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst
 Finished Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'hdmi_i/vdma_i0/U0/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_XD_FIFO/NON_BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst/xpm_fifo_base_inst'
 Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'hdmi_i/vdma_i0/U0/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst/xpm_fifo_base_inst'
 Finished Sourcing Tcl File [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl] for cell 'hdmi_i/vdma_i0/U0/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst/xpm_fifo_base_inst'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/hdmi_wrapper_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/hdmi_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/TOP_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/TOP_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
 INFO: [Project 1-111] Unisim Transformation Summary:
@@ -13621,15 +13621,18 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   RAM32M => RAM32M (RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMS32, RAMS32): 67 instances
   SRL16 => SRL16E: 2 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.542 . Memory (MB): peak = 1938.023 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.505 . Memory (MB): peak = 1939.789 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:07:41 ; elapsed = 00:07:58 . Memory (MB): peak = 1938.969 ; gain = 1552.598
+Finished Constraint Validation : Time (s): cpu = 00:07:20 ; elapsed = 00:07:26 . Memory (MB): peak = 1941.324 ; gain = 1555.305
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5580] Multithreading enabled for synth_design using a maximum of 2 processes.
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a200tsbg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:07:20 ; elapsed = 00:07:26 . Memory (MB): peak = 1941.324 ; gain = 1555.305
+---------------------------------------------------------------------------------
 INFO: [Synth 8-4471] merging register 'gen_axi.s_axi_rvalid_i_reg' into 'gen_axi.read_cs_reg[0:0]' [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/c631/hdl/axi_crossbar_v2_1_vl_rfs.v:3667]
 INFO: [Synth 8-5546] ROM "gen_axi.read_cs" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "gen_axi.s_axi_rlast_i" won't be mapped to RAM because it is too sparse
@@ -13888,7 +13891,7 @@ INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To p
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:08:28 ; elapsed = 00:08:48 . Memory (MB): peak = 1938.969 ; gain = 1552.598
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:08:02 ; elapsed = 00:08:10 . Memory (MB): peak = 1941.324 ; gain = 1555.305
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
@@ -20211,7 +20214,7 @@ INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM 
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
 INFO: [Common 17-14] Message 'Synth 8-3333' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:09:38 ; elapsed = 00:10:01 . Memory (MB): peak = 1953.402 ; gain = 1567.031
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:09:07 ; elapsed = 00:09:17 . Memory (MB): peak = 1941.324 ; gain = 1555.305
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
@@ -20296,11 +20299,8 @@ Report RTL Partitions:
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-5578] Moved timing constraint from pin 'hdmi_i/microblaze_i0/U0/Reset' to pin 'rst_mig_7series_0_100M/U0/FDRE_inst/Q'
-WARNING: [Synth 8-565] redefining clock 'sys_clk_i'
-INFO: [Synth 8-5819] Moved 1 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:09:54 ; elapsed = 00:10:17 . Memory (MB): peak = 2055.395 ; gain = 1669.023
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:09:23 ; elapsed = 00:09:32 . Memory (MB): peak = 2039.023 ; gain = 1653.004
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -20372,7 +20372,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:10:42 ; elapsed = 00:11:24 . Memory (MB): peak = 2117.688 ; gain = 1731.316
+Finished Technology Mapping : Time (s): cpu = 00:10:08 ; elapsed = 00:10:34 . Memory (MB): peak = 2102.109 ; gain = 1716.090
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -20517,7 +20517,7 @@ WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/
 WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [c:/proj_HoloFrame/fpga/NexysVideo_HDMI/src/bd/hdmi/ipshared/1cdc/hdl/axi_dwidth_converter_v2_1_vlsyn_rfs.v:6616]
 INFO: [Common 17-14] Message 'Synth 8-5396' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:10:50 ; elapsed = 00:11:32 . Memory (MB): peak = 2117.688 ; gain = 1731.316
+Finished IO Insertion : Time (s): cpu = 00:10:14 ; elapsed = 00:10:41 . Memory (MB): peak = 2102.109 ; gain = 1716.090
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -20530,7 +20530,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:10:50 ; elapsed = 00:11:32 . Memory (MB): peak = 2117.688 ; gain = 1731.316
+Finished Renaming Generated Instances : Time (s): cpu = 00:10:15 ; elapsed = 00:10:41 . Memory (MB): peak = 2102.109 ; gain = 1716.090
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -20542,7 +20542,7 @@ Report RTL Partitions:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:10:51 ; elapsed = 00:11:33 . Memory (MB): peak = 2117.688 ; gain = 1731.316
+Finished Handling Custom Attributes : Time (s): cpu = 00:10:15 ; elapsed = 00:10:42 . Memory (MB): peak = 2102.109 ; gain = 1716.090
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -20679,13 +20679,13 @@ Report Cell Usage:
 |71    |FDRE_1                         |     1|
 |72    |FDS                            |     3|
 |73    |FDSE                           |  1115|
-|74    |IBUF                           |     2|
+|74    |IBUF                           |     5|
 |75    |IBUFDS                         |     4|
 |76    |IBUFG                          |     1|
 |77    |IOBUF                          |     2|
 |78    |IOBUFDS_DIFF_OUT_INTERMDISABLE |     2|
 |79    |IOBUF_INTERMDISABLE            |    16|
-|80    |OBUF                           |    27|
+|80    |OBUF                           |    35|
 |81    |OBUFDS                         |     5|
 |82    |OBUFT                          |     2|
 +------+-------------------------------+------+
@@ -20694,7 +20694,7 @@ Report Instance Areas:
 +------+---------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+------+
 |      |Instance                                                                                                             |Module                                                                           |Cells |
 +------+---------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+------+
-|1     |top                                                                                                                  |                                                                                 | 69224|
+|1     |top                                                                                                                  |                                                                                 | 69235|
 |2     |  hdmi_i                                                                                                             |hdmi                                                                             | 69217|
 |3     |    dvi2rgb_i0                                                                                                       |hdmi_dvi2rgb_0_0                                                                 |  1145|
 |4     |      U0                                                                                                             |dvi2rgb                                                                          |  1145|
@@ -22752,7 +22752,7 @@ Report Instance Areas:
 |2056  |            \Use_ID_SRL16E.SRL16E_ID_2                                                                               |mdm_v3_2_12_MB_SRL16E__parameterized2                                            |     1|
 |2057  |        \Use_E2.BSCAN_I                                                                                              |MB_BSCANE2                                                                       |     1|
 |2058  |        \No_Dbg_Reg_Access.BUFG_DRCK                                                                                 |MB_BUFG                                                                          |     1|
-|2059  |    rst_mig_7series_0_100M                                                                                           |hdmi_rst_mig_7series_0_100M_0                                                    |    66|
+|2059  |    proc_sys_reset_0                                                                                                 |hdmi_proc_sys_reset_0_0                                                          |    66|
 |2060  |      U0                                                                                                             |proc_sys_reset                                                                   |    66|
 |2061  |        EXT_LPF                                                                                                      |lpf                                                                              |    23|
 |2062  |          \ACTIVE_HIGH_EXT.ACT_HI_EXT                                                                                |cdc_sync__parameterized1__3                                                      |     4|
@@ -22886,13 +22886,13 @@ Report Instance Areas:
 |2190  |        Inst_mmcme2_drp                                                                                              |mmcme2_drp                                                                       |   193|
 +------+---------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:10:51 ; elapsed = 00:11:33 . Memory (MB): peak = 2117.688 ; gain = 1731.316
+Finished Writing Synthesis Report : Time (s): cpu = 00:10:15 ; elapsed = 00:10:42 . Memory (MB): peak = 2102.109 ; gain = 1716.090
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 2999 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:03:19 ; elapsed = 00:10:39 . Memory (MB): peak = 2117.688 ; gain = 1390.090
-Synthesis Optimization Complete : Time (s): cpu = 00:10:51 ; elapsed = 00:11:42 . Memory (MB): peak = 2117.688 ; gain = 1731.316
+Synthesis finished with 0 errors, 0 critical warnings and 2998 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:03:04 ; elapsed = 00:09:47 . Memory (MB): peak = 2102.109 ; gain = 1373.496
+Synthesis Optimization Complete : Time (s): cpu = 00:10:16 ; elapsed = 00:10:43 . Memory (MB): peak = 2102.109 ; gain = 1716.090
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 3813 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 3816 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 5 inverter(s) to 22 load pin(s).
@@ -22918,11 +22918,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   SRL16 => SRL16E: 2 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-2253 Infos, 730 Warnings, 0 Critical Warnings and 0 Errors encountered.
+2251 Infos, 729 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:11:18 ; elapsed = 00:12:12 . Memory (MB): peak = 2134.777 ; gain = 1749.348
-INFO: [Common 17-1381] The checkpoint 'C:/proj_HoloFrame/fpga/NexysVideo_HDMI/proj/HDMI.runs/synth_1/hdmi_wrapper.dcp' has been generated.
-write_checkpoint: Time (s): cpu = 00:00:17 ; elapsed = 00:00:13 . Memory (MB): peak = 2134.777 ; gain = 0.000
-INFO: [runtcl-4] Executing : report_utilization -file hdmi_wrapper_utilization_synth.rpt -pb hdmi_wrapper_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.541 . Memory (MB): peak = 2134.777 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Fri Mar 22 18:55:26 2019...
+synth_design: Time (s): cpu = 00:10:41 ; elapsed = 00:11:10 . Memory (MB): peak = 2119.223 ; gain = 1733.797
+INFO: [Common 17-1381] The checkpoint 'C:/proj_HoloFrame/fpga/NexysVideo_HDMI/proj/HDMI.runs/synth_1/TOP.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:16 ; elapsed = 00:00:12 . Memory (MB): peak = 2119.223 ; gain = 0.000
+INFO: [runtcl-4] Executing : report_utilization -file TOP_utilization_synth.rpt -pb TOP_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.440 . Memory (MB): peak = 2119.223 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Tue Mar 26 00:34:09 2019...
